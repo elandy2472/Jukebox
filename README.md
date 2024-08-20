@@ -3,7 +3,7 @@ Uso Restringido
 Este software es propiedad exclusiva de los siguientes desarrolladores y creadores:
 
 Yilmar Andrés Rodríguez Lasso
-Julián Andrés Roldán Gaita
+Julián Andrés Roldán Gaita-----
 Julián Eduardo Hoyos Rodríguez
 Camilo Andrés Gómez Morales
 Camilo Rivera
