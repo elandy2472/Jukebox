@@ -1,0 +1,240 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+/* Estilo para la barra de desplazamiento en navegadores WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 12px;  /* Ancho de la barra de desplazamiento vertical */
+    height: 12px; /* Altura de la barra de desplazamiento horizontal */
+}
+
+
+
+/* Estilo para el pulgar de la barra de desplazamiento (la parte que se mueve) */
+::-webkit-scrollbar-thumb {
+    background-color: rgb(158, 159, 151);  /* Color del pulgar */
+    border-radius: 10px;        /* Redondear las esquinas del pulgar */
+
+}
+
+/* Estilo para el pulgar de la barra de desplazamiento al pasar el mouse por encima */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #0056b3;  /* Color del pulgar al pasar el mouse */
+}
+
+/* Estilo para las esquinas de la barra de desplazamiento (cuando hay tanto scroll vertical como horizontal) */
+::-webkit-scrollbar-corner {
+    background-color: #f1f1f1; /* Color de la esquina */
+}
+
+
+html {    
+    background-color: rgb(17, 21, 33);
+}
+body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header, nav, ul{
+    width: 100vw;
+    height: 10vh;
+    background-color: rgb(17, 21, 33);
+    border-bottom: 2px solid white;
+    display: flex;
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    z-index: 1;
+}
+ul > div{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+
+.logo > a, .opciones >li > a{
+    text-decoration: none;
+    /* background-color: blue; */
+    padding: 10px 20px;
+    color: white;
+}
+
+.logo{
+    /* background-color: red; */
+    padding: 0 0 0 50px;
+}
+.logo > a{
+    font-size: 26px;
+    font-weight: 800;
+}
+.opciones{
+    /* background-color: yellow; */
+    justify-content: flex-end;
+    padding: 0 20px 0 0;
+
+}
+.opciones > li > a{
+    font-weight: 400;
+    font-style: normal;
+}
+
+.opciones>li{
+    margin-left: 8px;
+    /* background-color: red; */
+    font-weight: 100;
+  font-style: normal;
+}
+
+#boton_iniciar_sesion{
+    background-color: blue;
+    border-radius: 10px;
+}
+
+
+main{
+    width: 80%;
+    height: 200vh;
+    background-color: aqua;
+    position: relative;
+    top: 110px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.section_ingresar_sala{
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 80vh;
+    /* background-color: rebeccapurple; */
+    background:url("../fotos/imagen_fondo_archivo_main.jpg") no-repeat center center;
+    border-radius: 20px;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+}
+
+.mensaje_section_ingresar_sala{
+    width: 100%;
+    height: 40%;
+    padding: 20px;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content:end;
+    align-items: start;
+    color: white;
+}
+
+.mensaje_section_ingresar_sala h1{
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.mensaje_section_ingresar_sala p{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.inputs_entrar_sala{
+    width: 100%;
+    height: 20%;
+    /* background-color: rgb(36, 15, 57); */
+}
+
+#formulario_ingresar_sala{
+    width: 50%;
+    height: 100%;
+    /* background-color: green; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#lbl_nickname, #lbl_codigo{
+    width: 190px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+#lbl_nickname, #lbl_codigo{
+    width: 40%;
+    height: 100%;
+    /* background-color: yellow; */
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0 0 10px;
+    align-items:start;
+    font-size: 18px;
+    color: white;
+    font-weight: 400;
+
+}
+
+#lbl_codigo{
+    /* background-color: rgb(67, 106, 106); */
+}
+
+#boton_ingresar_sala{
+    cursor: pointer;
+}
+
+input[type="text"]{
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    padding: 14px 30px 14px 15px;
+    background-color: rgb(17, 21, 33);
+    border-radius: 10px;
+    border: none;
+    caret-color: rgb(255, 255, 255);
+    color: white;
+}
+
+input[type="submit"]{
+    padding: 14px 30px;
+    background-color: rgb(24, 61, 227);
+    border-radius: 10px;
+    border: none;
+    color: white;
+    transition: all .5s;
+}
+
+input[type="submit"]:hover{
+    background-color: rgba(24, 61, 227, 0.912);
+}
+
+input::placeholder {
+    color: white; /* Cambia el color del placeholder a rojo */
+    opacity: 0.6; /* Asegura que el color del placeholder sea visible */
+}
+
+.targeta_como_funciona_jukebox{
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    background-color: red;
+    top: 600px;
+}
