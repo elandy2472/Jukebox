@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 
@@ -9,48 +8,64 @@
     font-family: "Roboto", sans-serif;
 }
 
+:root{
+    --color_principal: #111521;
+    --color_botones: rgb(24, 61, 228);
+    --color_fondo_inputs: #24284a;
+}
+
 /* Estilo para la barra de desplazamiento en navegadores WebKit (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-    width: 12px;  /* Ancho de la barra de desplazamiento vertical */
-    height: 12px; /* Altura de la barra de desplazamiento horizontal */
+    width: 12px;
+    /* Ancho de la barra de desplazamiento vertical */
+    height: 12px;
+    /* Altura de la barra de desplazamiento horizontal */
 }
 
 
 
 /* Estilo para el pulgar de la barra de desplazamiento (la parte que se mueve) */
 ::-webkit-scrollbar-thumb {
-    background-color: rgb(158, 159, 151);  /* Color del pulgar */
-    border-radius: 10px;        /* Redondear las esquinas del pulgar */
+    background-color: rgb(158, 159, 151);
+    /* Color del pulgar */
+    border-radius: 10px;
+    /* Redondear las esquinas del pulgar */
 
 }
 
 /* Estilo para el pulgar de la barra de desplazamiento al pasar el mouse por encima */
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #0056b3;  /* Color del pulgar al pasar el mouse */
+    background-color: #0056b3;
+    /* Color del pulgar al pasar el mouse */
 }
 
 /* Estilo para las esquinas de la barra de desplazamiento (cuando hay tanto scroll vertical como horizontal) */
 ::-webkit-scrollbar-corner {
-    background-color: #f1f1f1; /* Color de la esquina */
+    background-color: #f1f1f1;
+    /* Color de la esquina */
 }
 
 
-html {    
-    background-color: rgb(17, 21, 33);
+html {
+    background-color: var(--color_principal);
 }
-body{
+
+body {
     width: 100%;
     height: 100%;
+    padding: 0 50px 30px 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
 
-header, nav, ul{
+header,
+nav,
+ul {
     width: 100vw;
     height: 10vh;
-    background-color: rgb(17, 21, 33);
+    background-color: var(--color_principal);
     border-bottom: 2px solid white;
     display: flex;
     position: fixed;
@@ -61,7 +76,8 @@ header, nav, ul{
     list-style: none;
     z-index: 1;
 }
-ul > div{
+
+ul>div {
     width: 50%;
     height: 100%;
     display: flex;
@@ -69,172 +85,289 @@ ul > div{
 }
 
 
-.logo > a, .opciones >li > a{
+.logo>a,
+.opciones>li>a {
     text-decoration: none;
     /* background-color: blue; */
     padding: 10px 20px;
     color: white;
 }
 
-.logo{
+.logo {
     /* background-color: red; */
     padding: 0 0 0 50px;
 }
-.logo > a{
+
+.logo>a {
     font-size: 26px;
     font-weight: 800;
 }
-.opciones{
+
+.opciones {
     /* background-color: yellow; */
     justify-content: flex-end;
     padding: 0 20px 0 0;
 
 }
-.opciones > li > a{
+
+.opciones>li>a {
     font-weight: 400;
     font-style: normal;
 }
 
-.opciones>li{
+.opciones>li {
     margin-left: 8px;
     /* background-color: red; */
     font-weight: 100;
-  font-style: normal;
+    font-style: normal;
 }
 
-#boton_iniciar_sesion{
-    background-color: blue;
+#boton_iniciar_sesion {
+    background-color: var(--color_botones);
     border-radius: 10px;
 }
 
-
-main{
-    width: 80%;
-    height: 200vh;
-    background-color: aqua;
-    position: relative;
-    top: 110px;
+main {
+    width: 100%;
+    height: auto;
+    margin-top: 100px;
+    /* background-color: #0056b3; */
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .section_ingresar_sala{
-    position: absolute;
-    left: 0%;
-    top: 0%;
     width: 100%;
-    height: 80vh;
-    /* background-color: rebeccapurple; */
-    background:url("../fotos/imagen_fondo_archivo_main.jpg") no-repeat center center;
-    border-radius: 20px;
-    background-size: cover;
+    height: 600px;
+    
+    background: url("../fotos/fondo1.svg") no-repeat right center / 650px 700px;
+    /* background-color: aqua; */
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: center;
+    padding: 0 20px;
     align-items: center;
+    gap: 20px;
 }
 
-.mensaje_section_ingresar_sala{
-    width: 100%;
-    height: 40%;
-    padding: 20px;
-    /* background-color: red; */
-    display: flex;
-    flex-direction: column;
-    justify-content:end;
-    align-items: start;
-    color: white;
-}
-
-.mensaje_section_ingresar_sala h1{
-    font-size: 40px;
-    margin-bottom: 20px;
-}
-
-.mensaje_section_ingresar_sala p{
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
-.inputs_entrar_sala{
+.section_ingresar_sala > div{
     width: 100%;
     height: 20%;
-    /* background-color: rgb(36, 15, 57); */
+    /* background-color: yellow; */
 }
 
-#formulario_ingresar_sala{
-    width: 50%;
+.mensaje_section_ingresar_sala > h1{
+    font-size: 80px;
+    color: white;
+}
+.section_ingresar_sala > .just_p > p{
+    font-size: 25px;    
+    color: white;
+
+}
+
+.inputs_entrar_sala > form{
+    width: 40%;
     height: 100%;
-    /* background-color: green; */
+    /* background-color: #2e4a67; */
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-#lbl_nickname, #lbl_codigo{
-    width: 190px;
-    height: 100px;
-    display: flex;
-    flex-direction: column;
-}
-#lbl_nickname, #lbl_codigo{
-    width: 40%;
-    height: 100%;
-    /* background-color: yellow; */
-    display: flex;
-    flex-direction: column;
-    padding: 5px 0 0 10px;
-    align-items:start;
-    font-size: 18px;
-    color: white;
-    font-weight: 400;
-
+.inputs_entrar_sala > form > label{
+/* background-color: bisque; */
+height: 100%;
+width: 35%;
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+color: white;
+font-weight: 400;
 }
 
-#lbl_codigo{
-    /* background-color: rgb(67, 106, 106); */
-}
-
-#boton_ingresar_sala{
-    cursor: pointer;
-}
-
-input[type="text"]{
-    width: 100%;
-    height: auto;
-    margin-top: 10px;
-    padding: 14px 30px 14px 15px;
-    background-color: rgb(17, 21, 33);
+.inputs_entrar_sala > form > label > input{
+    padding: 20px 20px 20px 10px;
     border-radius: 10px;
     border: none;
-    caret-color: rgb(255, 255, 255);
+    background-color: var(--color_fondo_inputs);
     color: white;
+}
+
+input::placeholder{
+    color: rgb(147, 155, 196);
 }
 
 input[type="submit"]{
-    padding: 14px 30px;
-    background-color: rgb(24, 61, 227);
-    border-radius: 10px;
+    background-color: var(--color_botones);
     border: none;
+    padding: 18px 32px 18px 32px;
+    border-radius: 10px;
+    margin-top: 34px;
     color: white;
-    transition: all .5s;
+    cursor: pointer;
 }
 
-input[type="submit"]:hover{
-    background-color: rgba(24, 61, 227, 0.912);
-}
-
-input::placeholder {
-    color: white; /* Cambia el color del placeholder a rojo */
-    opacity: 0.6; /* Asegura que el color del placeholder sea visible */
-}
-
-.targeta_como_funciona_jukebox{
+.tarjeta_como_funciona_jukebox{
     width: 100%;
-    height: 400px;
-    position: absolute;
-    background-color: red;
-    top: 600px;
+    height: 250px;
+    /* background-color: #2e4a67; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.tarjeta_como_funciona_jukebox > .contenedor_tarjeta_como_funciona_titulo {
+width: 100%;
+height: 15%;
+/* background-color: green; */
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
+color: white;
+font-size: 22px;
+}
+
+.tarjeta_como_funciona_jukebox > .contenedor_tarjeta_como_funciona_contenedores{
+    width: 100%;
+    height: 85%;
+    /* background-color: green; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+} 
+
+.tarjeta_como_funciona_jukebox > .contenedor_tarjeta_como_funciona_contenedores > div{
+    width: 12%;
+    height: 100%;
+    background-color: var(--color_fondo_inputs);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: 1px solid white;
+    gap: 4px;
+}
+
+.contenedor_tarjeta_como_funciona_contenedores > div > i{
+    font-size: 30px;
+width: 80px;
+height: 46px;
+/* background-color: red; */
+color: white;
+}
+
+.contenedor_tarjeta_como_funciona_contenedores > div > p{
+    color: white;
+    font-size: 16px;
+}
+
+.Descripcion_sobre_nosotros{
+    width: 100%;
+    height: 600px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    /* padding: 0 50px; */
+
+}
+
+
+.Descripcion_sobre_nosotros_contenedores_wave{
+    width: 100%;
+    height: 40%;
+    background-color: var(--color_principal);
+}
+
+.Descripcion_sobre_nosotros_contenedores_uno{
+    background-color: var(--color_fondo_inputs);
+    width: 100%;
+    height: 10%;
+    font-size: 22px;
+    color: white;
+    text-align: center;
+}
+
+.Descripcion_sobre_nosotros_contenedores_dos{
+font-size: 16px;
+color: rgba(255, 255, 255, 0.779);
+width: 100%;
+height: 10%;
+padding: 0 30px;
+background-color: var(--color_fondo_inputs);
+}
+
+
+.Descripcion_sobre_nosotros_contenedores_tres{
+    background-color: var(--color_fondo_inputs);
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+
+}
+
+.Descripcion_sobre_nosotros_contenedores_tres > img{
+width: 20%;
+height: 100%;
+background-color: white;
+border-radius: 10px;
+border: 1px solid white;
+}
+
+footer{
+    width: 100%;
+    height: 100px;
+    padding: 10px 0 0 0;
+    background-color: var(--color_fondo_inputs);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer > div{
+    width: 100%;
+    height: 50%;
+    background-color: var(--color_fondo_inputs);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.politicayprivacidad{
+    background-color: var(--color_fondo_inputs);
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+}
+
+.redes_sociales{
+    gap: 20px;
+    width: 100%;    
+    color: rgba(255, 255, 255, 0.779);
+
+}
+
+.derechos{
+    width: 100%;
+}
+
+.politicayprivacidad > a, .redes_sociales > a, .derechos{
+    text-decoration: none;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.779);
 }

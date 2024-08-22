@@ -6,13 +6,13 @@
             </div>
             <div class="opciones">
                 <li>
-                    <a href="#">Como funciona Jukebox</a>
+                    <a href="#tarjeta_como_funciona_jukebox">Como funciona Jukebox</a>
                 </li>
                 <li>
-                    <a href="#">Nosotros</a>
+                    <a href="#Descripcion_sobre_nosotros">Nosotros</a>
                 </li>
                 <li>
-                    <a href="#">Compañia</a>
+                    <a href="#">Empresas</a>
                 </li>
                 <li>
                     <a id="boton_iniciar_sesion" href="#">Inicia sesion</a>
