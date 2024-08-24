@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-08-2024 a las 01:03:21
+-- Tiempo de generación: 25-08-2024 a las 01:52:57
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -24,52 +24,41 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `admin`
+-- Estructura de tabla para la tabla `admingeneral`
 --
 
-CREATE TABLE `admin` (
-  `id` smallint(6) NOT NULL,
-  `nombre` varchar(30) NOT NULL,
-  `correo` varchar(30) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `contraseña` varchar(30) NOT NULL,
-  `contraseñaTemporal` varchar(30) DEFAULT NULL
+CREATE TABLE `admingeneral` (
+  `cedula` varchar(20) NOT NULL,
+  `nombres` varchar(50) NOT NULL,
+  `apellidos` varchar(50) NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `contrasena` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `adminempresa`
+-- Estructura de tabla para la tabla `clientes`
 --
 
-CREATE TABLE `adminempresa` (
-  `id` smallint(6) NOT NULL,
-  `primer_nombre` varchar(30) NOT NULL,
-  `segundo_nombre` varchar(30) DEFAULT NULL,
-  `primer_apellido` varchar(30) NOT NULL,
-  `segundo_apellido` varchar(30) DEFAULT NULL,
-  `correo` varchar(30) NOT NULL,
-  `cedula` smallint(6) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `contraseña` varchar(30) NOT NULL,
-  `contraseñaTemporal` varchar(30) DEFAULT NULL,
-  `nombre_empresa` varchar(30) NOT NULL,
-  `direccion` varchar(30) DEFAULT NULL,
-  `imagen_verificacion` blob DEFAULT NULL,
-  `ciudad` varchar(30) DEFAULT NULL,
-  `nit` smallint(6) DEFAULT NULL
+CREATE TABLE `clientes` (
+  `idCliente` int(11) NOT NULL,
+  `nickname` varchar(50) NOT NULL,
+  `aceptarCookies` tinyint(1) NOT NULL,
+  `fechaRegistro` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cliente`
+-- Estructura de tabla para la tabla `empresa`
 --
 
-CREATE TABLE `cliente` (
-  `id` smallint(6) NOT NULL,
-  `nickname` varchar(15) NOT NULL,
-  `aceptarCookies` tinyint(1) NOT NULL
+CREATE TABLE `empresa` (
+  `nit` varchar(15) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `direccion` varchar(255) DEFAULT NULL,
+  `ciudad` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -79,16 +68,13 @@ CREATE TABLE `cliente` (
 --
 
 CREATE TABLE `listareproduccion` (
-  `id` smallint(6) NOT NULL,
-  `estadoReproduccion` varchar(15) NOT NULL,
-  `idCliente` smallint(6) DEFAULT NULL,
-  `idAdmin` smallint(6) DEFAULT NULL,
-  `idAdminEmpresa` smallint(6) DEFAULT NULL,
-  `idSala` smallint(6) DEFAULT NULL,
+  `idListaReproduccion` int(11) NOT NULL,
   `cancion` varchar(100) NOT NULL,
-  `genero` varchar(30) DEFAULT NULL,
-  `artista` varchar(30) DEFAULT NULL,
-  `duracion` time NOT NULL
+  `genero` varchar(50) DEFAULT NULL,
+  `artista` varchar(100) DEFAULT NULL,
+  `duracion` time DEFAULT NULL,
+  `idCliente` int(11) DEFAULT NULL,
+  `idSala` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -98,14 +84,11 @@ CREATE TABLE `listareproduccion` (
 --
 
 CREATE TABLE `sala` (
-  `id` smallint(6) NOT NULL,
-  `codigo` varchar(15) NOT NULL,
-  `estadoSala` tinyint(1) NOT NULL,
-  `aforoSala` tinyint(4) NOT NULL,
-  `idSession` smallint(6) DEFAULT NULL,
-  `idListaReproduccion` smallint(6) DEFAULT NULL,
-  `idAdmin` smallint(6) DEFAULT NULL,
-  `idAdminEmpresa` smallint(6) DEFAULT NULL
+  `idSala` int(11) NOT NULL,
+  `nombreSala` varchar(50) NOT NULL,
+  `codigoSala` varchar(20) NOT NULL,
+  `aforoFinalSala` int(11) NOT NULL,
+  `documento` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -115,13 +98,30 @@ CREATE TABLE `sala` (
 --
 
 CREATE TABLE `sesion` (
-  `id` smallint(6) NOT NULL,
+  `idSesion` int(11) NOT NULL,
   `inicio` datetime NOT NULL,
-  `fin` datetime NOT NULL,
-  `idCliente` smallint(6) DEFAULT NULL,
-  `idAdmin` smallint(6) DEFAULT NULL,
-  `idAdminEmpresa` smallint(6) DEFAULT NULL,
-  `idSala` smallint(6) DEFAULT NULL
+  `final` datetime DEFAULT NULL,
+  `idCliente` int(11) DEFAULT NULL,
+  `idSala` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarioempresa`
+--
+
+CREATE TABLE `usuarioempresa` (
+  `documento` varchar(20) NOT NULL,
+  `nombres` varchar(50) NOT NULL,
+  `apellidos` varchar(50) NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `contrasena` varchar(255) NOT NULL,
+  `imgDocumentoLegal` longblob DEFAULT NULL,
+  `fechaRegistro` date NOT NULL,
+  `membresia` varchar(50) DEFAULT NULL,
+  `nit` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -129,94 +129,92 @@ CREATE TABLE `sesion` (
 --
 
 --
--- Indices de la tabla `admin`
+-- Indices de la tabla `admingeneral`
 --
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `correo` (`correo`),
-  ADD UNIQUE KEY `username` (`username`);
+ALTER TABLE `admingeneral`
+  ADD PRIMARY KEY (`cedula`),
+  ADD UNIQUE KEY `usuario` (`usuario`),
+  ADD KEY `idx_usuario_admin` (`usuario`);
 
 --
--- Indices de la tabla `adminempresa`
+-- Indices de la tabla `clientes`
 --
-ALTER TABLE `adminempresa`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `correo` (`correo`),
-  ADD UNIQUE KEY `username` (`username`);
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`idCliente`),
+  ADD KEY `idx_nickname` (`nickname`);
 
 --
--- Indices de la tabla `cliente`
+-- Indices de la tabla `empresa`
 --
-ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `nickname` (`nickname`);
+ALTER TABLE `empresa`
+  ADD PRIMARY KEY (`nit`),
+  ADD KEY `idx_nombre` (`nombre`);
 
 --
 -- Indices de la tabla `listareproduccion`
 --
 ALTER TABLE `listareproduccion`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_cliente_lista` (`idCliente`),
-  ADD KEY `fk_admin_lista` (`idAdmin`),
-  ADD KEY `fk_admin_empresa_lista` (`idAdminEmpresa`),
-  ADD KEY `fk_sala_lista` (`idSala`);
+  ADD PRIMARY KEY (`idListaReproduccion`),
+  ADD KEY `idCliente` (`idCliente`),
+  ADD KEY `idSala` (`idSala`),
+  ADD KEY `idx_cancion` (`cancion`),
+  ADD KEY `idx_artista` (`artista`);
 
 --
 -- Indices de la tabla `sala`
 --
 ALTER TABLE `sala`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `codigo` (`codigo`);
+  ADD PRIMARY KEY (`idSala`),
+  ADD UNIQUE KEY `codigoSala` (`codigoSala`),
+  ADD KEY `documento` (`documento`),
+  ADD KEY `idx_nombreSala` (`nombreSala`);
 
 --
 -- Indices de la tabla `sesion`
 --
 ALTER TABLE `sesion`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_cliente` (`idCliente`),
-  ADD KEY `fk_admin` (`idAdmin`),
-  ADD KEY `fk_admin_empresa` (`idAdminEmpresa`),
-  ADD KEY `fk_sala` (`idSala`);
+  ADD PRIMARY KEY (`idSesion`),
+  ADD KEY `idCliente` (`idCliente`),
+  ADD KEY `idSala` (`idSala`),
+  ADD KEY `idx_inicio` (`inicio`),
+  ADD KEY `idx_final` (`final`);
+
+--
+-- Indices de la tabla `usuarioempresa`
+--
+ALTER TABLE `usuarioempresa`
+  ADD PRIMARY KEY (`documento`),
+  ADD UNIQUE KEY `usuario` (`usuario`),
+  ADD KEY `nit` (`nit`),
+  ADD KEY `idx_usuario` (`usuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `admin`
+-- AUTO_INCREMENT de la tabla `clientes`
 --
-ALTER TABLE `admin`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `adminempresa`
---
-ALTER TABLE `adminempresa`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `cliente`
---
-ALTER TABLE `cliente`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `clientes`
+  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `listareproduccion`
 --
 ALTER TABLE `listareproduccion`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `idListaReproduccion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `sala`
 --
 ALTER TABLE `sala`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `idSala` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `sesion`
 --
 ALTER TABLE `sesion`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `idSesion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
@@ -226,19 +224,27 @@ ALTER TABLE `sesion`
 -- Filtros para la tabla `listareproduccion`
 --
 ALTER TABLE `listareproduccion`
-  ADD CONSTRAINT `fk_admin_empresa_lista` FOREIGN KEY (`idAdminEmpresa`) REFERENCES `adminempresa` (`id`) ON DELETE SET NULL,
-  ADD CONSTRAINT `fk_admin_lista` FOREIGN KEY (`idAdmin`) REFERENCES `admin` (`id`) ON DELETE SET NULL,
-  ADD CONSTRAINT `fk_cliente_lista` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`id`) ON DELETE SET NULL,
-  ADD CONSTRAINT `fk_sala_lista` FOREIGN KEY (`idSala`) REFERENCES `sala` (`id`) ON DELETE SET NULL;
+  ADD CONSTRAINT `listareproduccion_ibfk_1` FOREIGN KEY (`idCliente`) REFERENCES `clientes` (`idCliente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `listareproduccion_ibfk_2` FOREIGN KEY (`idSala`) REFERENCES `sala` (`idSala`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `sala`
+--
+ALTER TABLE `sala`
+  ADD CONSTRAINT `sala_ibfk_1` FOREIGN KEY (`documento`) REFERENCES `usuarioempresa` (`documento`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `sesion`
 --
 ALTER TABLE `sesion`
-  ADD CONSTRAINT `fk_admin` FOREIGN KEY (`idAdmin`) REFERENCES `admin` (`id`) ON DELETE SET NULL,
-  ADD CONSTRAINT `fk_admin_empresa` FOREIGN KEY (`idAdminEmpresa`) REFERENCES `adminempresa` (`id`) ON DELETE SET NULL,
-  ADD CONSTRAINT `fk_cliente` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`id`) ON DELETE SET NULL,
-  ADD CONSTRAINT `fk_sala` FOREIGN KEY (`idSala`) REFERENCES `sala` (`id`) ON DELETE SET NULL;
+  ADD CONSTRAINT `sesion_ibfk_1` FOREIGN KEY (`idCliente`) REFERENCES `clientes` (`idCliente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `sesion_ibfk_2` FOREIGN KEY (`idSala`) REFERENCES `sala` (`idSala`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `usuarioempresa`
+--
+ALTER TABLE `usuarioempresa`
+  ADD CONSTRAINT `usuarioempresa_ibfk_1` FOREIGN KEY (`nit`) REFERENCES `empresa` (`nit`) ON DELETE SET NULL ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
