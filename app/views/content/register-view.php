@@ -18,30 +18,30 @@
 
                 <div class="half-width">
                     <label for="name1">Primer nombre</label>
-                    <input type="text" id="name1" name="name1" placeholder="Nombre" minlength="4" maxlength="15" required>
+                    <input type="text" id="name1" name="name1" placeholder="Nombre" title="Debe tener entre 4 y 15 caracteres, sin espacio, numeros ni C. especiales" pattern="[a-zA-Z]+"  minlength="4" maxlength="15" required>
                 </div>
                 <div class="half-width">
                     <label for="name2">Segundo nombre</label>
-                    <input type="text" id="name2" name="name2" placeholder="Nombre" minlength="4" maxlength="15">
+                    <input type="text" id="name2" name="name2" placeholder="Nombre" title="Debe tener entre 4 y 15 caracteres, sin espacio, numeros ni C. especiales" pattern="[a-zA-Z]+" minlength="4" maxlength="15">
                 </div>
 
                 <div class="half-width">
                     <label for="last1">Primer apellido</label>
-                    <input type="text" id="last1" name="last1" placeholder="Apellido" minlength="4" maxlength="15" required>
+                    <input type="text" id="last1" name="last1" placeholder="Apellido" title="Debe tener entre 4 y 15 caracteres, sin espacio, numeros ni C. especiales" pattern="[a-zA-Z]+" minlength="4" maxlength="15" required>
                 </div>
                 <div class="half-width">
                     <label for="last2">Segundo apellido</label>
-                    <input type="text" id="last2" name="last2" placeholder="Apellido" minlength="4" maxlength="15">
+                    <input type="text" id="last2" name="last2" placeholder="Apellido" title="Debe tener entre 4 y 15 caracteres, sin espacio, numeros ni C. especiales" pattern="[a-zA-Z]+" minlength="4" maxlength="15">
                 </div>
 
                 <div>
                     <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" name="email" placeholder="Correo electrónico" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                    <input type="email" id="email" name="email" placeholder="Correo electrónico"title="Debe un @ y extencion de dominio" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                 </div>
 
                 <div>
                     <label for="cc">Tipo de documento</label>
-                    <input type="text" id="cc" name="cc" placeholder="Cédula" minlength="5" maxlength="18" inputmode="numeric" pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+                    <input type="text" id="cc" name="cc" placeholder="Cédula" minlength="7" maxlength="11" inputmode="numeric" pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
                 </div>
 
                 <div>
@@ -57,7 +57,7 @@
 
                 <div>
                     <label for="nameEnter">Empresa</label>
-                    <input type="text" id="nameEnter" name="nameEnter" placeholder="Nombre de la empresa" minlength="4" maxlength="50" required>
+                    <input type="text" id="nameEnter" name="nameEnter" placeholder="Nombre de la empresa" pattern="[a-zA-Z]+" minlength="4" maxlength="50" required>
                 </div>
 
                 <div class="half-width">
@@ -71,8 +71,8 @@
 
                 <div class="uploadDocuments">
                     <label for="legalDocument">Sube tu documento legal</label>
-                    <input type="file" id="legalDocument" name="legalDocument" onchange="showFileName()" required>
-                    <span class="file-name" id="file-name">No se ha seleccionado ningún archivo</span>
+                    <input type="file" id="legalDocument" name="legalDocument" accept="image/*,application/pdf" onchange="showFileName()" required>
+                    <span class="file-name" id="file-name">No se ha seleccionado ningún archivo IMG o PDF</span>
                 </div>
 
                 <div>
