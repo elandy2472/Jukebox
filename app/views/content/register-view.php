@@ -51,7 +51,8 @@
 
                 <div>
                     <label for="password">Contraseña</label>
-                    <input type="password" id="password" name="password" placeholder="Contraseña" minlength="8" maxlength="20" required>
+                    <input type="password" id="password" name="password" placeholder="Contraseña" minlength="8" maxlength="20" 
+                    pattern="(?=.*[A-Z])[A-Za-z\d]{8,20}" title="Debe tener entre 8 y 20 caracteres, y al menos una letra mayúscula" required>
                 </div>
 
                 <div>
