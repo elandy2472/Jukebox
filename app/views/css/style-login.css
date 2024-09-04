@@ -1,0 +1,89 @@
+body {
+    background-color: #1e1e2f;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.login-container {
+    background-color: #2b2b3c;
+    padding: 20px;
+    border-radius: 10px;
+    width: 420px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3b3b4e;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+input::placeholder {
+    color: #777777;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.sign-in-button {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(24, 61, 228);
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.forgot-password {
+    display: block;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #b0b0b0;
+    text-decoration: none;
+}
+
+.register-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #3b3b4e;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+}
