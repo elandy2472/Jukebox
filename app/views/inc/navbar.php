@@ -2,7 +2,7 @@
     <nav>
         <ul>
             <div class="logo">
-                <a href="#"><b>Jukebox</b></a>
+                <a href="http://localhost/jukebox/"><b>Jukebox</b></a>
             </div>
             <div class="opciones">
                 <li>
@@ -15,7 +15,7 @@
                     <a href="#">Empresas</a>
                 </li>
                 <li>
-                    <a id="boton_iniciar_sesion" href="#">Inicia sesion</a>
+                    <a id="boton_iniciar_sesion" href="http://localhost/jukebox/login">Inicia sesion</a>
                 </li>
             </div>
         </ul>

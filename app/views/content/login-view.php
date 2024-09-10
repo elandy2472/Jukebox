@@ -1,4 +1,3 @@
-<!-- Pagina principal que se va a ejecutar, es decir, vendría siendo el INDEX -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,8 +11,7 @@
 
     <main>
         <div class="login-container">
-            <!-- Formulario de inicio de sesión -->
-            <form action="login.php" method="post">
+            <form action="index.php?views=login" method="post">
                 <label for="username">Usuario o Correo Electrónico</label>
                 <input type="text" id="username" name="username" placeholder="Usuario o Correo Electrónico" 
                     required minlength="8" maxlength="50"
@@ -36,7 +34,6 @@
 
                 <button type="button" class="register-button">Registro</button>
 
-                <!-- Mostrar mensaje de error si existe -->
                 <?php if (!empty($error)) : ?>
                     <div class="error-message">
                         <?php echo $error; ?>
