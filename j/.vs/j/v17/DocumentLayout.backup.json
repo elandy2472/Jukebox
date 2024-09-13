@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "C:\\xampp\\htdocs\\j\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\j\\jukebox-pro-client\\src\\App.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:jukebox-pro-client\\src\\App.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\j\\jukebox-pro-server\\server.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:jukebox-pro-server\\server.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\j\\jukebox-pro-client\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:jukebox-pro-client\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\j\\jukebox-pro-client\\src\\App.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:jukebox-pro-client\\src\\App.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\j\\crearSala-view.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:crearSala-view.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\j\\jukebox-pro-client\\src\\App.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:jukebox-pro-client\\src\\App.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\j\\crearSala-view.php||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:crearSala-view.php||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\xampp\\htdocs\\j\\jukebox-pro-client\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:jukebox-pro-client\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,17 +30,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "crearSala-view.php",
               "DocumentMoniker": "C:\\xampp\\htdocs\\j\\crearSala-view.php",
               "RelativeDocumentMoniker": "crearSala-view.php",
               "ToolTip": "C:\\xampp\\htdocs\\j\\crearSala-view.php",
               "RelativeToolTip": "crearSala-view.php",
-              "ViewState": "AgIAAKQAAAAAAAAAAAAcwMAAAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAHwAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002338|",
               "WhenOpened": "2024-09-04T22:47:53.142Z",
               "EditorCaption": ""
@@ -53,46 +53,44 @@
               "RelativeDocumentMoniker": "jukebox-pro-client\\src\\App.css",
               "ToolTip": "C:\\xampp\\htdocs\\j\\jukebox-pro-client\\src\\App.css",
               "RelativeToolTip": "jukebox-pro-client\\src\\App.css",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAkwIIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAAAHsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-09-04T22:33:10.604Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-04T22:33:10.604Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "App.js",
               "DocumentMoniker": "C:\\xampp\\htdocs\\j\\jukebox-pro-client\\src\\App.js",
               "RelativeDocumentMoniker": "jukebox-pro-client\\src\\App.js",
               "ToolTip": "C:\\xampp\\htdocs\\j\\jukebox-pro-client\\src\\App.js",
               "RelativeToolTip": "jukebox-pro-client\\src\\App.js",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAABkAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-09-04T22:32:40.673Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "package.json",
               "DocumentMoniker": "C:\\xampp\\htdocs\\j\\jukebox-pro-client\\package.json",
               "RelativeDocumentMoniker": "jukebox-pro-client\\package.json",
               "ToolTip": "C:\\xampp\\htdocs\\j\\jukebox-pro-client\\package.json",
               "RelativeToolTip": "jukebox-pro-client\\package.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABYAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-04T22:23:39.673Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-04T22:23:39.673Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "server.js",
               "DocumentMoniker": "C:\\xampp\\htdocs\\j\\jukebox-pro-server\\server.js",
               "RelativeDocumentMoniker": "jukebox-pro-server\\server.js",
               "ToolTip": "C:\\xampp\\htdocs\\j\\jukebox-pro-server\\server.js",
               "RelativeToolTip": "jukebox-pro-server\\server.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-09-04T22:10:52.928Z",
               "EditorCaption": ""
