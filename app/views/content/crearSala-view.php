@@ -149,7 +149,6 @@ $createdRoom = isset($_SESSION['created_room']) ? $_SESSION['created_room'] : nu
             <div class="created-room">
                 <h3>Room Created: <?php echo htmlspecialchars($createdRoom['name']); ?></h3>
                 <p>Room Code: <?php echo htmlspecialchars($createdRoom['code']); ?></p>
-                <p>Share Link: <a href="https://jukeboxpro.com/room/<?php echo urlencode($createdRoom['code']); ?>">https://jukeboxpro.com/room/<?php echo htmlspecialchars($createdRoom['code']); ?></a></p>
             </div>
         <?php endif; ?>
     </div>
