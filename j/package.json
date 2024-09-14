@@ -1,0 +1,25 @@
+{
+  "name": "jukebox-pro",
+  "version": "1.0.0",
+  "description": "Jukebox Pro - Aplicación para crear y gestionar salas de música",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd ../jukebox-pro-server && node server.js",
+    "client": "cd ../jukebox-pro-client && npm start",
+    "install-all": "npm install && cd ../jukebox-pro-server && npm install && cd ../jukebox-pro-client && npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jukebox",
+    "music",
+    "room",
+    "react",
+    "node"
+  ],
+  "author": "Tu Nombre",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^6.2.0"
+  }
+}
