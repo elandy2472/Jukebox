@@ -6,24 +6,20 @@ function generateRoomCode() {
 }
 
 $roomName = '';
-$createdRoom = null;
-$message = '';
+$error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $roomName = trim($_POST['room_name']);
     if (!empty($roomName)) {
         $roomCode = generateRoomCode();
-        $createdRoom = [
-            'name' => $roomName,
-            'code' => $roomCode
-        ];
-        $_SESSION['created_room'] = $createdRoom;
-        $message = "Room \"{$roomName}\" has been created as a draft.";
-        $roomName = '';
+        $_SESSION['room_code'] = $roomCode;
+        $_SESSION['room_name'] = $roomName;
+        header("Location: codigosala");
+        exit;
+    } else {
+        $error = "Please enter a room name.";
     }
 }
-
-$createdRoom = isset($_SESSION['created_room']) ? $_SESSION['created_room'] : null;
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +27,7 @@ $createdRoom = isset($_SESSION['created_room']) ? $_SESSION['created_room'] : nu
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jukebox Pro - Create a Room</title>
+    <title>Create Room - Jukebox Pro</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -41,9 +37,9 @@ $createdRoom = isset($_SESSION['created_room']) ? $_SESSION['created_room'] : nu
             padding: 0;
         }
         .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         header {
             display: flex;
@@ -56,12 +52,26 @@ $createdRoom = isset($_SESSION['created_room']) ? $_SESSION['created_room'] : nu
             display: flex;
             align-items: center;
         }
+        nav {
+            display: flex;
+            align-items: center;
+        }
         nav button {
             background: none;
             border: none;
             color: #999;
             cursor: pointer;
             margin-left: 1rem;
+            padding: 0.5rem;
+        }
+        nav button:hover {
+            color: white;
+        }
+        main {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            flex-grow: 1;
         }
         h1, h2 {
             margin-bottom: 0.5rem;
@@ -103,54 +113,37 @@ $createdRoom = isset($_SESSION['created_room']) ? $_SESSION['created_room'] : nu
         button[type="submit"]:hover {
             background-color: #1557b0;
         }
-        .message {
-            background-color: #4caf50;
-            color: white;
-            padding: 10px;
-            border-radius: 4px;
-            margin-top: 1rem;
-        }
-        .created-room {
-            background-color: #333;
-            padding: 1rem;
-            border-radius: 4px;
-            margin-top: 1rem;
-        }
-        .created-room a {
-            color: #1a73e8;
+        .error {
+            color: #ff4444;
+            margin-bottom: 1rem;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <span style="font-size: 24px;">☰</span>
-            <h1 style="margin-left: 10px;">Jukebox Pro</h1>
-        </div>
-        <nav>
-            <button>Panel de control</button>
-            <button>?</button>
-            <button>👤</button>
-        </nav>
-    </header>
     <div class="container">
-        <h2>Create a room</h2>
-        <p>Your room will be created as a draft and can be published at any time.</p>
-        <img src="https://i.gifer.com/origin/73/7370303fc26b3f29c54fdd6c7391e25a_w200.webp" alt="Neon-lit room representing a music venue">
-        <form method="POST">
-            <label for="room-name">Room name</label>
-            <input type="text" id="room-name" name="room_name" placeholder="Enter a room name" required value="<?php echo htmlspecialchars($roomName); ?>">
-            <button type="submit">Create</button>
-        </form>
-        <?php if (!empty($message)): ?>
-            <div class="message"><?php echo htmlspecialchars($message); ?></div>
-        <?php endif; ?>
-        <?php if ($createdRoom): ?>
-            <div class="created-room">
-                <h3>Room Created: <?php echo htmlspecialchars($createdRoom['name']); ?></h3>
-                <p>Room Code: <?php echo htmlspecialchars($createdRoom['code']); ?></p>
             </div>
-        <?php endif; ?>
+            <nav>
+                <button>Today</button>
+                <button>Explore</button>
+                <button>Create</button>
+                <button>Activity</button>
+                <button>?</button>
+                <button>👤</button>
+            </nav>
+        </header>
+        <main>
+            <h2>Create a room</h2>
+            <p>Your room will be created as a draft and can be published at any time.</p>
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/6%20CREAR%20SALA-mQr7P4YmFeZwpJt4MzbDsnTKPhVNjc.jpg" alt="Neon-lit room representing a music venue">
+            <?php if ($error): ?>
+                <p class="error"><?php echo htmlspecialchars($error); ?></p>
+            <?php endif; ?>
+            <form method="POST">
+                <label for="room-name">Room name</label>
+                <input type="text" id="room-name" name="room_name" placeholder="Enter a room name" required value="<?php echo htmlspecialchars($roomName); ?>">
+                <button type="submit">Create</button>
+            </form>
+        </main>
     </div>
 </body>
 </html>
