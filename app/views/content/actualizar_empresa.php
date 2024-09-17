@@ -42,6 +42,7 @@ $conn->close();
     <title>Actualizar Empresa</title>
 </head>
 <body>
+    <div class="container">
     <section class="register">
         <h2>Actualizar Datos de la Empresa</h2>
         <form action="../../controllers/actualizarController.php" method="post" enctype="multipart/form-data">
@@ -68,5 +69,6 @@ $conn->close();
             </div>
         </form>
     </section>
+</div>
 </body>
 </html>

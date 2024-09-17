@@ -6,9 +6,9 @@
     <title>Actualización Exitosa</title>
     <style>
         body {
-            background-color: #f0f4f8;
+            background-color: #1e1e2f; /* Fondo oscuro similar a la vista anterior */
             font-family: Arial, sans-serif;
-            color: #333;
+            color: #ffffff; /* Texto claro */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,37 +18,39 @@
 
         .container {
             text-align: center;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5); /* Sombra fuerte */
         }
 
         h1 {
-            color: #4caf50;
+            color: rgb(24, 61, 228); /* Azul del título */
             margin-bottom: 20px;
+            font-size: 2em;
         }
 
         p {
             font-size: 1.1em;
             margin-bottom: 20px;
+            color: #cccccc; /* Texto ligeramente más claro */
         }
 
         .button {
             display: inline-block;
             padding: 10px 20px;
             font-size: 1em;
-            color: #fff;
-            background-color: #4caf50;
+            color: #ffffff;
+            background-color: rgb(24, 61, 228); /* Azul del botón */
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             text-decoration: none;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease;
         }
 
         .button:hover {
-            background-color: #45a049;
+            background-color: #3b5cf0; /* Azul más claro al hover */
         }
     </style>
 </head>
@@ -56,7 +58,7 @@
     <div class="container">
         <h1>¡Actualización Exitosa!</h1>
         <p>Los datos se han actualizado correctamente.</p>
-        <a href="http://localhost\Jukebox\dashboard" class="button">Volver al inicio</a>
+        <a href="http://localhost/Jukebox/dashboard" class="button">Volver al inicio</a>
     </div>
 </body>
 </html>

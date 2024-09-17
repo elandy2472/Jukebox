@@ -11,6 +11,43 @@ body {
     padding: 20px;
 }
 
+/* Contenedor principal para el fondo */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo transparente similar al login */
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5); /* Sombra alrededor del contenedor */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de fondo decorativo (círculos más pequeños) */
+.container::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 100px; /* Tamaño reducido */
+    height: 100px;
+    background-color: rgba(24, 61, 228, 0.5); /* Círculo decorativo azul */
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 100px; /* Tamaño reducido */
+    height: 100px;
+    background-color: rgba(24, 61, 228, 0.5); /* Otro círculo decorativo */
+    border-radius: 50%;
+    z-index: 0;
+}
+
 /* Título */
 h2 {
     text-align: center;
@@ -18,6 +55,7 @@ h2 {
     font-size: 2em;
     color: rgb(24, 61, 228); /* Azul para destacar el título */
     font-weight: 600;
+    z-index: 1; /* Asegurarse de que el título esté sobre los decorativos */
 }
 
 /* Contenedor del formulario */
@@ -29,7 +67,8 @@ section.update {
     width: 100%;
     max-width: 600px;
     box-sizing: border-box;
-    transition: box-shadow 0.3s ease;
+    z-index: 1;
+    position: relative;
 }
 
 section.update:hover {
