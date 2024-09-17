@@ -6,9 +6,9 @@
     <title>Actualización Exitosa</title>
     <style>
         body {
-            background-color: #1e1e2f; /* Fondo oscuro similar a la vista anterior */
+            background-color: #1e1e2f; 
             font-family: Arial, sans-serif;
-            color: #ffffff; /* Texto claro */
+            color: #ffffff; 
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,14 +18,14 @@
 
         .container {
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.1); /* Fondo translúcido */
+            background-color: rgba(255, 255, 255, 0.1); 
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5); /* Sombra fuerte */
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5); 
         }
 
         h1 {
-            color: rgb(24, 61, 228); /* Azul del título */
+            color: rgb(24, 61, 228); 
             margin-bottom: 20px;
             font-size: 2em;
         }
@@ -33,7 +33,7 @@
         p {
             font-size: 1.1em;
             margin-bottom: 20px;
-            color: #cccccc; /* Texto ligeramente más claro */
+            color: #cccccc; 
         }
 
         .button {
@@ -41,7 +41,7 @@
             padding: 10px 20px;
             font-size: 1em;
             color: #ffffff;
-            background-color: rgb(24, 61, 228); /* Azul del botón */
+            background-color: rgb(24, 61, 228); 
             border: none;
             border-radius: 8px;
             text-decoration: none;
@@ -50,7 +50,7 @@
         }
 
         .button:hover {
-            background-color: #3b5cf0; /* Azul más claro al hover */
+            background-color: #3b5cf0; 
         }
     </style>
 </head>

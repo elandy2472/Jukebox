@@ -1,8 +1,8 @@
 /* Estilos generales */
 body {
-    background-color: #1e1e2f; /* Color de fondo oscuro */
+    background-color: #1e1e2f; 
     font-family: 'Arial', sans-serif;
-    color: #ffffff; /* Texto claro sobre fondo oscuro */
+    color: #ffffff; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,27 +11,25 @@ body {
     padding: 20px;
 }
 
-/* Contenedor principal para el fondo */
 .container {
     width: 100%;
     max-width: 1200px;
-    background-color: rgba(255, 255, 255, 0.1); /* Fondo transparente similar al login */
+    background-color: rgba(255, 255, 255, 0.1); 
     border-radius: 15px;
     padding: 30px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5); /* Sombra alrededor del contenedor */
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
     position: relative;
     overflow: hidden;
 }
 
-/* Efecto de fondo decorativo (círculos más pequeños) */
 .container::before {
     content: '';
     position: absolute;
     top: -20px;
     left: -20px;
-    width: 100px; /* Tamaño reducido */
+    width: 100px; 
     height: 100px;
-    background-color: rgba(24, 61, 228, 0.5); /* Círculo decorativo azul */
+    background-color: rgba(24, 61, 228, 0.5); 
     border-radius: 50%;
     z-index: 0;
 }
@@ -41,29 +39,27 @@ body {
     position: absolute;
     bottom: -20px;
     right: -20px;
-    width: 100px; /* Tamaño reducido */
+    width: 100px; 
     height: 100px;
-    background-color: rgba(24, 61, 228, 0.5); /* Otro círculo decorativo */
+    background-color: rgba(24, 61, 228, 0.5); 
     border-radius: 50%;
     z-index: 0;
 }
 
-/* Título */
 h2 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 2em;
-    color: rgb(24, 61, 228); /* Azul para destacar el título */
+    color: rgb(24, 61, 228); 
     font-weight: 600;
-    z-index: 1; /* Asegurarse de que el título esté sobre los decorativos */
+    z-index: 1; 
 }
 
-/* Contenedor del formulario */
 section.update {
-    background-color: #2b2b3c; /* Fondo oscuro del formulario */
+    background-color: #2b2b3c; 
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5); 
     width: 100%;
     max-width: 600px;
     box-sizing: border-box;
@@ -72,10 +68,9 @@ section.update {
 }
 
 section.update:hover {
-    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.7); /* Efecto de hover más fuerte */
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.7); 
 }
 
-/* Estilos del formulario */
 form .content {
     display: flex;
     flex-wrap: wrap;
@@ -94,7 +89,7 @@ label {
     display: block;
     font-size: 0.9em;
     margin-bottom: 8px;
-    color: #cccccc; /* Texto más claro para etiquetas */
+    color: #cccccc; 
     font-weight: 500;
 }
 
@@ -107,7 +102,7 @@ input[type="file"] {
     margin-bottom: 20px;
     border: 2px solid #3b3b4e;
     border-radius: 8px;
-    background-color: #3b3b4e; /* Fondo de los inputs oscuro */
+    background-color: #3b3b4e; 
     color: #ffffff;
     font-size: 0.95em;
     box-sizing: border-box;
@@ -115,16 +110,16 @@ input[type="file"] {
 }
 
 input::placeholder {
-    color: #777777; /* Placeholder con un color suave */
+    color: #777777; 
 }
 
 input:focus {
     outline: none;
-    border-color: rgb(24, 61, 228); /* Bordes azules en focus */
+    border-color: rgb(24, 61, 228); 
     background-color: #2b2b3c;
 }
 
-/* Botón */
+
 .button {
     display: flex;
     justify-content: center;
@@ -144,7 +139,7 @@ input:focus {
 }
 
 .button button:hover {
-    background-color: #3b5cf0; /* Color más claro al hover */
+    background-color: #3b5cf0; 
 }
 
 .button button span {
@@ -152,7 +147,7 @@ input:focus {
     font-weight: 600;
 }
 
-/* Checkbox */
+
 .checkbox {
     display: flex;
     align-items: center;
@@ -168,7 +163,7 @@ input:focus {
     font-size: 0.9em;
 }
 
-/* Estilos del Modal */
+
 .modal {
     display: none;
     position: fixed;
@@ -177,12 +172,12 @@ input:focus {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo más oscuro */
+    background-color: rgba(0, 0, 0, 0.8); 
     justify-content: center;
     align-items: center;
 }
 
-/* Contenido del Modal */
+
 .modal-content {
     background-color: #2b2b3c;
     padding: 30px;
@@ -206,7 +201,6 @@ input:focus {
     }
 }
 
-/* Botón de Cerrar (X) */
 .close {
     position: absolute;
     top: 10px;
@@ -220,21 +214,20 @@ input:focus {
     color: rgb(24, 61, 228);
 }
 
-/* Título del Modal */
+
 .modal h2 {
     color: #ffffff;
     margin-bottom: 10px;
     font-size: 1.8em;
 }
 
-/* Texto dentro del Modal */
+
 .modal p {
     font-size: 1em;
     color: #cccccc;
     margin-bottom: 20px;
 }
 
-/* Botón Aceptar */
 .modal button {
     background-color: rgb(24, 61, 228);
     color: #ffffff;
