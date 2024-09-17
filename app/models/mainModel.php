@@ -15,12 +15,24 @@ class mainModel
     private $DB_USER = DB_USER;
     private $DB_PASS = DB_PASS;
 
+    private $db;
+    public function __construct() {
+        $this->db = $this->conectar();
+    }
+
+
+
+
     protected function conectar()
-    {
-        $conexion = new PDO("mysql:host=" . $this->DB_SERVER . "dbname=" . $this->DB_NAME, $this->DB_USER, $this->DB_PASS);
+{
+    try {
+        $conexion = new PDO("mysql:host=" . $this->DB_SERVER . ";dbname=" . $this->DB_NAME, $this->DB_USER, $this->DB_PASS);
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conexion;
+    } catch (PDOException $e) {
+        die('Error en la conexión: ' . $e->getMessage());
     }
+}
 
     public function limpiarCadena($cadena)
     {
@@ -43,51 +55,25 @@ class mainModel
     public function verificarDatos($filtro, $cadena)
     {
         if (preg_match("/^" . $filtro . "$/", $cadena)) {
-            return false; //Devolverá FALSE porque no hay problema 
+            return false;
         } else {
-            return true; //Devolverá True porque hay problema
+            return true; 
         }
     }
 
-    protected function guardarDatos($tabla, $datos,)
-    {
-        $query = "INSERT INTO $tabla (";
+    public function guardarDatos($tabla, $datos) {
+        $campos = implode(', ', array_column($datos, 'campo_nombre'));
+        $marcadores = implode(', ', array_column($datos, 'campo_marcador'));
 
-        $C = 0;
+        $sql = "INSERT INTO $tabla ($campos) VALUES ($marcadores)";
+        $query = $this->db->prepare($sql);
 
-        foreach ($datos as $clave) {
-            if ($C >= 1) {
-                $query .= ",";
-            }
-            $query .= $clave['campo_nombre']; //Campo_nombre, es el nombre de los campos que hay en la base de datos
-            $C++;
+        foreach ($datos as $dato) {
+            $query->bindValue($dato['campo_marcador'], $dato['campo_valor']);
         }
 
-        $query .= ") VALUES (";
-
-        $C = 0;
-        foreach ($datos as $clave) {
-            if ($C >= 1) {
-                $query .= ",";
-            }
-            $query .= $clave['campo_marcador']; //Campo_marcador, es el nombre del marcador
-            $C++;
-        }
-
-        $query .= ")";
-
-        $sql = $this->conectar()->prepare($query);
-
-
-        foreach ($datos as $clave) {
-            $sql->bindParam($clave["campo_marcador"], $clave["campo_valor"]); //Campo_valor, es el campo del valor en el array
-        }
-
-        $sql->execute();
-
-        return $sql;
+        $query->execute();
     }
-
     public function seleccionDatos($tipo, $tabla, $campo, $id)
     {
         $tipo = $this->limpiarCadena($tipo);
@@ -201,4 +187,64 @@ class mainModel
         $tabla .= '</nav>';
         return $tabla;
     }
+
+
+    public function obtenerNITPorUsuarioOCorreo($usuarioOcorreo) {
+        // Conectar a la base de datos y buscar el NIT basado en el usuario o correo
+        $sql = "SELECT nit FROM usuarioempresa WHERE usuario = :usuarioOcorreo OR correo = :usuarioOcorreo";
+        
+        $query = $this->db->prepare($sql);
+        $query->bindParam(":usuarioOcorreo", $usuarioOcorreo, PDO::PARAM_STR);
+        $query->execute();
+
+        $resultado = $query->fetch(PDO::FETCH_ASSOC);
+
+        // Retornar el NIT si existe
+        if ($resultado) {
+            return $resultado['nit'];
+        } else {
+            return null;
+        }
+    }
+
+
+
+    public function validarCredenciales($usuarioOcorreo, $contrasena)
+{
+    try {
+        $usuarioOcorreo = $this->limpiarCadena($usuarioOcorreo);
+
+        $sql = $this->conectar()->prepare("
+            SELECT * 
+            FROM usuarioempresa 
+            WHERE (usuario = :usuarioOcorreo OR correo = :usuarioOcorreo)
+        ");
+        $sql->bindParam(':usuarioOcorreo', $usuarioOcorreo);
+        $sql->execute();
+
+        if ($sql->rowCount() > 0) {
+            $resultado = $sql->fetch(PDO::FETCH_ASSOC);
+
+            if ($contrasena === $resultado['contrasena']) {
+                return true; 
+            } else {
+                
+                error_log("Contraseña no válida para usuario o correo: $usuarioOcorreo");
+                return false; 
+            }
+        } else {
+            
+            error_log("Usuario o correo no encontrado: $usuarioOcorreo");
+            return false; 
+        }
+    } catch (PDOException $e) {
+        error_log('Error en la validación de credenciales: ' . $e->getMessage());
+        return false;
+    }
 }
+
+
+
+}
+   
+
