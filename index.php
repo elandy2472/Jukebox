@@ -35,9 +35,11 @@ if (isset($_GET["views"])) {
         require_once($vista);
     }
 
+    require_once("./app/views/inc/script.php");
 
     ?>
-   
+
+
 
 </body>
 
