@@ -17,7 +17,7 @@ if (isset($_SESSION['nit'])) {
 </head>
 
 <body>
-    <?php require_once("./app/views/inc/navbar.php") ?>
+    <?php require_once("./app/views/inc/nav2bar.php") ?>
 
     <main>
         <div class="login-container">
