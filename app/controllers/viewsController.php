@@ -15,7 +15,6 @@ class viewsController extends viewsModel {
 
         return $respuesta;
     }
-
     public function iniciarSesionControlador($usuarioOcorreo, $contrasena) {
         $modelo = new mainModel();
         // Validar las credenciales del usuario
@@ -54,4 +53,4 @@ class viewsController extends viewsModel {
             exit();
         }
     }
-} 
+}

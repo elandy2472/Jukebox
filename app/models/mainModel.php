@@ -55,25 +55,51 @@ class mainModel
     public function verificarDatos($filtro, $cadena)
     {
         if (preg_match("/^" . $filtro . "$/", $cadena)) {
-            return false;
+            return false; //Devolverá FALSE porque no hay problema 
         } else {
-            return true; 
+            return true; //Devolverá True porque hay problema
         }
     }
 
-    public function guardarDatos($tabla, $datos) {
-        $campos = implode(', ', array_column($datos, 'campo_nombre'));
-        $marcadores = implode(', ', array_column($datos, 'campo_marcador'));
+    protected function guardarDatos($tabla, $datos,)
+    {
+        $query = "INSERT INTO $tabla (";
 
-        $sql = "INSERT INTO $tabla ($campos) VALUES ($marcadores)";
-        $query = $this->db->prepare($sql);
+        $C = 0;
 
-        foreach ($datos as $dato) {
-            $query->bindValue($dato['campo_marcador'], $dato['campo_valor']);
+        foreach ($datos as $clave) {
+            if ($C >= 1) {
+                $query .= ",";
+            }
+            $query .= $clave['campo_nombre']; //Campo_nombre, es el nombre de los campos que hay en la base de datos
+            $C++;
         }
 
-        $query->execute();
+        $query .= ") VALUES (";
+
+        $C = 0;
+        foreach ($datos as $clave) {
+            if ($C >= 1) {
+                $query .= ",";
+            }
+            $query .= $clave['campo_marcador']; //Campo_marcador, es el nombre del marcador
+            $C++;
+        }
+
+        $query .= ")";
+
+        $sql = $this->conectar()->prepare($query);
+
+
+        foreach ($datos as $clave) {
+            $sql->bindParam($clave["campo_marcador"], $clave["campo_valor"]); //Campo_valor, es el campo del valor en el array
+        }
+
+        $sql->execute();
+
+        return $sql;
     }
+
     public function seleccionDatos($tipo, $tabla, $campo, $id)
     {
         $tipo = $this->limpiarCadena($tipo);
@@ -188,7 +214,6 @@ class mainModel
         return $tabla;
     }
 
-
     public function obtenerNITPorUsuarioOCorreo($usuarioOcorreo) {
         // Conectar a la base de datos y buscar el NIT basado en el usuario o correo
         $sql = "SELECT nit FROM usuarioempresa WHERE usuario = :usuarioOcorreo OR correo = :usuarioOcorreo";
@@ -243,8 +268,4 @@ class mainModel
     }
 }
 
-
-
 }
-   
-

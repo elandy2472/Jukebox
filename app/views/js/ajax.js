@@ -1,3 +1,94 @@
+/* Enviar formularios via AJAX */
+const formularios_ajax=document.querySelectorAll(".FormularioAjax");
+
+formularios_ajax.forEach(formularios => {
+
+    formularios.addEventListener("submit",function(e){
+        
+        e.preventDefault();
+
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "Quieres realizar la acción solicitada",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, realizar',
+            cancelButtonText: 'No, cancelar'
+        }).then((result) => {
+            if (result.isConfirmed){
+
+                let data = new FormData(this);
+                let method=this.getAttribute("method");
+                let action=this.getAttribute("action");
+
+                let encabezados= new Headers();
+
+                let config={
+                    method: method,
+                    headers: encabezados,
+                    mode: 'cors',
+                    cache: 'no-cache',
+                    body: data
+                };
+
+                fetch(action,config)
+                .then(respuesta => respuesta.json())
+                .then(respuesta =>{ 
+                    return alertas_ajax(respuesta);
+                });
+            }
+        });
+
+    });
+
+});
+
+
+
+function alertas_ajax(alerta){
+    if(alerta.tipo=="simple"){
+
+        Swal.fire({
+            icon: alerta.icono,
+            title: alerta.titulo,
+            text: alerta.texto,
+            confirmButtonText: 'Aceptar'
+        });
+
+    }else if(alerta.tipo=="recargar"){
+
+        Swal.fire({
+            icon: alerta.icono,
+            title: alerta.titulo,
+            text: alerta.texto,
+            confirmButtonText: 'Aceptar'
+        }).then((result) => {
+            if(result.isConfirmed){
+                location.reload();
+            }
+        });
+
+    }else if(alerta.tipo=="limpiar"){
+
+        Swal.fire({
+            icon: alerta.icono,
+            title: alerta.titulo,
+            text: alerta.texto,
+            confirmButtonText: 'Aceptar'
+        }).then((result) => {
+            if(result.isConfirmed){
+                document.querySelector(".FormularioAjax").reset();
+            }
+        });
+
+    }else if(alerta.tipo=="redireccionar"){
+        window.location.href=alerta.url;
+    }
+}
+
+/* Procesamiento de cookies */
 document.addEventListener('DOMContentLoaded', function() {
     deleteCookie('cookies_accepted');
 
@@ -43,30 +134,31 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch((error) => {
             console.error('Error al guardar la preferencia de cookies:', error);
         });
-    }
+    }})
 
-    // const nicknameInput = document.getElementById('nickname');
-    // const codigoInput = document.getElementById('codigo');
-    // const botonIngresar = document.getElementById('boton_ingresar_sala');
 
-    // botonIngresar.disabled = true;
-    // botonIngresar.style.backgroundColor = "#ccc"; 
 
-    // function checkInputs() {
-    //     const nicknameValue = nicknameInput.value.trim();
-    //     const codigoValue = codigoInput.value.trim();
+/* Boton cerrar sesion */
+let btn_exit=document.getElementById("btn_exit");
 
-    //     if (nicknameValue !== "" && codigoValue !== "") {
-    //         botonIngresar.disabled = false;
-    //         botonIngresar.style.backgroundColor = "#007BFF"; 
-    //     } else {
-    //         botonIngresar.disabled = true;
-    //         botonIngresar.style.backgroundColor = "#ccc"; 
-    //     }
-    // }
+btn_exit.addEventListener("click", function(e){
 
-    // nicknameInput.addEventListener('input', checkInputs);
-    // codigoInput.addEventListener('input', checkInputs);
-   
+    e.preventDefault();
     
+    Swal.fire({
+        title: '¿Quieres salir del sistema?',
+        text: "La sesión actual se cerrará y saldrás del sistema",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, salir',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            let url=this.getAttribute("href");
+            window.location.href=url;
+        }
+    });
+
 });

@@ -1,4 +1,5 @@
 <?php
+
 require_once("./config/app.php");
 require_once("./autoload.php");
 require_once("./app/views/inc/session_start.php");
@@ -7,16 +8,17 @@ use app\controllers\viewsController;
 
 $viewsController = new viewsController();
 
+// Procesar inicio de sesión si es un formulario POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset($_POST['password'])) {
-    // Procesar el inicio de sesión
     $usuarioOcorreo = $_POST['username'];
     $contrasena = $_POST['password'];
     $resultado = $viewsController->iniciarSesionControlador($usuarioOcorreo, $contrasena);
     if ($resultado !== true) {
-        $error = $resultado;
+        $error = $resultado; // Puedes usar esta variable para mostrar un mensaje de error en la vista
     }
 }
 
+// Obtener la vista solicitada a través de GET
 if (isset($_GET["views"])) {
     $url = explode("/", $_GET["views"]);
 } else {
@@ -44,14 +46,15 @@ if (!in_array($vista, $vistasSinAuth)) {
 
 <body>
     <?php
-    // Aquí no necesitas repetir el código de $viewsController o de obtener vistas,
-    // ya lo has hecho anteriormente.
-    
+    // Mostrar la vista correspondiente
     if (in_array($vista, $vistasSinAuth)) {
         require_once("./app/views/content/" . $vista . "-view.php");
     } else {
         require_once($vista);
     }
+
+    // Incluir los scripts de JavaScript al final del archivo
+    require_once("./app/views/inc/script.php");
     ?>
 </body>
 
