@@ -19,7 +19,7 @@
                 <p>Solo ingresa un apodo, y el codigo de una sala y a disfrutar</p>
             </div>
             <div class="inputs_entrar_sala">
-                <form action="#" method="POST" id="formulario_ingresar_sala">
+                <form class="FormularioAjax" action="#" method="POST" id="formulario_ingresar_sala">
                     <label for="nickname" id="lbl_nickname">
                         Apodo
                         <input type="text" id="nickname" name="nickname" placeholder="Ingresa tu Apodo">
