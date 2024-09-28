@@ -80,7 +80,7 @@
 
             <!-- Sala 3 -->
             <div class="room-card">
-                <img src="../img/music3.jpg" alt="Sala 3" />
+                <img src="../img/musica3.jpg" alt="Sala 3" />
                 <div class="room-info">
                     <p><strong>Sala:</strong> 4</p>
                     <div class="controls">
