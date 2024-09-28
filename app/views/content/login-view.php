@@ -1,26 +1,24 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../css/style-login.css">
-    <!-- require_once("./app/views/inc/head.php");  -->
+    <link rel="stylesheet" href=".\app\views\css\style-login.css">
+    <?php require_once("./app/views/inc/head.php"); ?>
 </head>
 
 <body>
-  <!-- require_once("./app/views/inc/navbar.php"); -->
+    <?php require_once("./app/views/inc/navbar.php") ?>
 
     <main>
         <div class="login-container">
-            <!-- Formulario de inicio de sesión -->
-            <form action="../../controllers/loginController.php" method="POST">
-                <label for="correo">Usuario o Correo Electrónico</label>
-                <input type="text" id="correo" name="correo" placeholder="Usuario o Correo Electrónico" 
+            <form action="index.php?views=login" method="post">
+                <label for="username">Usuario o Correo Electrónico</label>
+                <input type="text" id="username" name="username" placeholder="Usuario o Correo Electrónico" 
                     required minlength="8" maxlength="50"
                     pattern="([A-Za-z0-9_]{8,30}|([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}))"
                     title="Debe ser un nombre de usuario de 8-30 caracteres o una dirección de correo electrónico válida.">
 
-                <label for="contrasena">Password</label>
-                <input type="password" id="contrasena" name="contrasena" placeholder="Password" 
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" 
                     required minlength="8" maxlength="20" 
                     title="La contraseña debe tener entre 8 y 20 caracteres.">
 
@@ -33,12 +31,8 @@
 
                 <a href="#" class="forgot-password">Forgot your password?</a>
 
-                <a href="register-view.php">
-                    <button  type="button" class="register-button">Registro</button>
-                </a>
-                
+                <a href="http://localhost/jukebox/app/views/content/register-view.php"id="registro" class="register-button">Registro</a>
 
-                <!-- Mostrar mensaje de error si existe -->
                 <?php if (!empty($error)) : ?>
                     <div class="error-message">
                         <?php echo $error; ?>
@@ -48,6 +42,7 @@
 
         </div>
     </main>
-
+    
 </body>
 </html>
+
