@@ -68,14 +68,17 @@ CREATE TABLE `empresa` (
 --
 
 CREATE TABLE `listareproduccion` (
-  `idListaReproduccion` int(11) NOT NULL,
+  `idListaReproduccion` int(11) NOT NULL AUTO_INCREMENT,
   `cancion` varchar(100) NOT NULL,
   `genero` varchar(50) DEFAULT NULL,
   `artista` varchar(100) DEFAULT NULL,
   `duracion` time DEFAULT NULL,
   `idCliente` int(11) DEFAULT NULL,
-  `idSala` int(11) DEFAULT NULL
+  `idSala` int(11) DEFAULT NULL,
+  `ultima_enlistada` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idListaReproduccion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
 
 -- --------------------------------------------------------
 
