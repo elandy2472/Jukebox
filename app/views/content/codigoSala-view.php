@@ -139,18 +139,18 @@ if (isset($_POST['share'])) {
             </nav>
         </header>
         <main>
-            <button class="done-button" onclick="window.location.href='sala/<?php echo $roomCode; ?>'">Done</button>
-            <h2>Room code copied</h2>
-            <p>You can share this code with friends to join your room</p>
+            <button class="done-button" onclick="window.location.href='sala/<?php echo $roomCode; ?>'">ir a sala</button>
+            <h2>Codigo De Sala </h2>
+            <p>Comparte El Codigo De Sala con tus amigos</p>
             <div class="room-code">
                 <span>#</span>
                 <span><?php echo htmlspecialchars($roomCode); ?></span>
                 <span class="copy-icon" onclick="copyCode()" title="Copy code">📋</span>
             </div>
             <form method="POST">
-                <button type="submit" name="share" class="button">Share code</button>
+                <button type="submit" name="share" class="button">Compartir Codigo</button>
             </form>
-            <p>Your friends can also join by searching for it in the app</p>
+            <p>Tus amigos también pueden unirse buscándolos en la aplicación.</p>
             <?php if (isset($shareMessage)): ?>
                 <p><?php echo htmlspecialchars($shareMessage); ?></p>
             <?php endif; ?>
@@ -160,9 +160,9 @@ if (isset($_POST['share'])) {
         function copyCode() {
             var code = "<?php echo $roomCode; ?>";
             navigator.clipboard.writeText(code).then(function() {
-                alert("Room code copied to clipboard!");
+                alert("Código de sala copiado al portapapeles!");
             }, function(err) {
-                console.error('Could not copy text: ', err);
+                console.error('No se pudo copiar el texto: ', err);
             });
         }
     </script>

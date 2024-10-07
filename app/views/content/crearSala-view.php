@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once '../../models/mainModel.php'; // Asegúrate de incluir el modelo
 
 function generateRoomCode() {
     return strtoupper(substr(str_shuffle(str_repeat('abcdefghijklmnopqrstuvwxyz0123456789', 6)), 0, 6));
@@ -10,14 +11,55 @@ $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $roomName = trim($_POST['room_name']);
+    
     if (!empty($roomName)) {
         $roomCode = generateRoomCode();
-        $_SESSION['room_code'] = $roomCode;
-        $_SESSION['room_name'] = $roomName;
-        header("Location: codigosala");
-        exit;
+        
+        // Aforo final predeterminado
+        $aforoFinalSala = 30;
+        
+        // Obtener el documento del usuario que está iniciando sesión
+        $documento = $_SESSION['documento']; // Asegúrate de que esto está establecido en la sesión
+
+        // Conectar a la base de datos y crear un objeto de mainModel
+        $modelo = new \app\models\mainModel();
+        
+        // Preparar los datos para guardar
+        $datos = [
+            [
+                'campo_nombre' => 'nombreSala',
+                'campo_marcador' => ':nombreSala',
+                'campo_valor' => $roomName
+            ],
+            [
+                'campo_nombre' => 'codigoSala',
+                'campo_marcador' => ':codigoSala',
+                'campo_valor' => $roomCode
+            ],
+            [
+                'campo_nombre' => 'aforoFinalSala',
+                'campo_marcador' => ':aforoFinalSala',
+                'campo_valor' => $aforoFinalSala
+            ],
+            [
+                'campo_nombre' => 'documento',
+                'campo_marcador' => ':documento',
+                'campo_valor' => $documento
+            ]
+        ];
+
+        // Guardar los datos en la base de datos
+        try {
+            $modelo->guardarDatos('sala', $datos);
+            $_SESSION['room_code'] = $roomCode;
+            $_SESSION['room_name'] = $roomName;
+            header("Location: codigosala"); // Redireccionar después de crear la sala
+            exit;
+        } catch (Exception $e) {
+            $error = "Error al crear la sala: " . $e->getMessage();
+        }
     } else {
-        $error = "Please enter a room name.";
+        $error = "Por favor introduce el nombre de una sala.";
     }
 }
 ?>
@@ -27,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Room - Jukebox Pro</title>
+    <title>crear sala - Jukebox Pro</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -37,7 +79,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             padding: 0;
         }
         .container {
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
@@ -132,16 +173,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </nav>
         </header>
         <main>
-            <h2>Create a room</h2>
-            <p>Your room will be created as a draft and can be published at any time.</p>
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/6%20CREAR%20SALA-mQr7P4YmFeZwpJt4MzbDsnTKPhVNjc.jpg" alt="Neon-lit room representing a music venue">
+            <h2>Crear Sala</h2>
+            <p>Su sala se creará  podrá publicarse en cualquier momento.</p>
+            <img src="https://i.gifer.com/origin/73/7370303fc26b3f29c54fdd6c7391e25a_w200.webp" alt="Neon-lit room representing a music venue">
             <?php if ($error): ?>
                 <p class="error"><?php echo htmlspecialchars($error); ?></p>
             <?php endif; ?>
             <form method="POST">
-                <label for="room-name">Room name</label>
+                <label for="room-name">nombre de sala</label>
                 <input type="text" id="room-name" name="room_name" placeholder="Enter a room name" required value="<?php echo htmlspecialchars($roomName); ?>">
-                <button type="submit">Create</button>
+                <button type="submit">Crear</button>
             </form>
         </main>
     </div>
