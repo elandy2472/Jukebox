@@ -2,103 +2,76 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo APP_URL; ?>app/views/css/register-view.css">
-    <title>Register</title>
+    <?php require_once("./app/views/inc/head.php"); ?>
 </head>
 
-<body>
-    <section class="register">
+<body id="body_register">
+    <main id="main_register">
+        <form action="<?php APP_URL; ?>app/ajax/usuarioAjax.php" method="POST" id="form_register" class="FormularioAjax" enctype="multipart/form-data">
 
-        <h2>Registra tu empresa</h2>
-        <form action="../../controllers/registerController.php" method="post" enctype="multipart/form-data">
+            <h1>Registra tu empresa</h1>
 
-            <div class="content">
+            <label for="input_nombres_register" id="label_register">
+                Nombres
+                <input type="text" id="input_nombres_register" name="nombres" placeholder="Usuario o correo" title="Debe tener entre 4 y 50 caracteres, sin espacio, numeros ni C. especiales" minlength="4" maxlength="50" required>
+            </label>
 
-                <div class="half-width">
-                    <label for="name1">Primer nombre</label>
-                    <input type="text" id="name1" name="name1" placeholder="Nombre" title="Debe tener entre 4 y 15 caracteres, sin espacio, numeros ni C. especiales" pattern="[a-zA-Z]+"  minlength="4" maxlength="15" required>
-                </div>
-                <div class="half-width">
-                    <label for="name2">Segundo nombre</label>
-                    <input type="text" id="name2" name="name2" placeholder="Nombre" title="Debe tener entre 4 y 15 caracteres, sin espacio, numeros ni C. especiales" pattern="[a-zA-Z]+" minlength="4" maxlength="15">
-                </div>
+            <label for="input_apellidos_register" id="label_register">
+                Apellidos
+                <input type="text" id="input_apellidos_register" name="apellidos" placeholder="Apellidos" title="Debe tener entre 6 y 50 caracteres, sin espacio, numeros ni C. especiales" minlength="6" maxlength="50" required>
+            </label>
 
-                <div class="half-width">
-                    <label for="last1">Primer apellido</label>
-                    <input type="text" id="last1" name="last1" placeholder="Apellido" title="Debe tener entre 4 y 15 caracteres, sin espacio, numeros ni C. especiales" pattern="[a-zA-Z]+" minlength="4" maxlength="15" required>
-                </div>
-                <div class="half-width">
-                    <label for="last2">Segundo apellido</label>
-                    <input type="text" id="last2" name="last2" placeholder="Apellido" title="Debe tener entre 4 y 15 caracteres, sin espacio, numeros ni C. especiales" pattern="[a-zA-Z]+" minlength="4" maxlength="15">
-                </div>
+            <label for="input_correo_register" id="label_register">
+                Correo
+                <input type="email" id="input_correo_register" name="correo" placeholder="Correo" title="Debe tener entre 4 y 100 caracteres, sin espacio, numeros ni C. especiales" minlength="10" maxlength="100" required>
+            </label>
 
-                <div>
-                    <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" name="email" placeholder="Correo electrónico"title="Debe un @ y extencion de dominio" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
-                </div>
+            <label for="input_tipo_documento_register" id="label_register">
+                Documento
+                <input type="number" id="input_tipo_documento_register" name="tipo_documento" title="Debe tener entre 8 y 10  caracteres, sin espacio, numeros ni C. especiales" placeholder="Tipo de documento" minlength="8" maxlength="10" required>
+            </label>
 
-                <div>
-                    <label for="cc">Tipo de documento</label>
-                    <input type="text" id="cc" name="cc" placeholder="Cédula" minlength="7" maxlength="11" inputmode="numeric" pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
-                </div>
+            <label for="input_usuario_register" id="label_register">
+                Usuario
+                <input type="text" id="input_usuario_register" name="usuario" placeholder="Usuario" title="Debe tener entre 10 y 50 caracteres, sin espacio, numeros ni C. especiales" minlength="10" maxlength="50" required>
+            </label>
 
-                <div>
-                    <label for="username">Usuario</label>
-                    <input type="text" id="username" name="username" placeholder="Nombre de usuario" minlength="4" maxlength="15" required>
-                </div>
+            <label for="input_contraseña_register" id="label_register">
+                Contraseña
+                <input type="password" id="input_contraseña_register" name="contraseña" placeholder="Contraseña" title="Debe tener entre 8 y 50 caracteres, sin espacio, numeros ni C. especiales" minlength="10" maxlength="50" required>
+            </label>
 
-                <div>
-                    <label for="password">Contraseña</label>
-                    <input type="password" id="password" name="password" placeholder="Contraseña" minlength="8" maxlength="20" 
-                    pattern="(?=.*[A-Z])[A-Za-z\d]{8,20}" title="Debe tener entre 8 y 20 caracteres, y al menos una letra mayúscula" required>
-                </div>
+            <label for="input_empresa_register" id="label_register">
+                Empresa
+                <input type="text" id="input_empresa_register" name="empresa" placeholder="Empresa" title="Debe tener entre 4 y 50 caracteres, sin espacio, numeros ni C. especiales" minlength="4" maxlength="50" required>
+            </label>
 
-                <div>
-                    <label for="nameEnter">Empresa</label>
-                    <input type="text" id="nameEnter" name="nameEnter" placeholder="Nombre de la empresa" pattern="[a-zA-Z]+" minlength="4" maxlength="50" required>
-                </div>
-
-                <div class="half-width">
-                    <label for="address">Dirección</label>
-                    <input type="text" id="address" name="address" placeholder="Dirección" minlength="4" maxlength="50" required>
-                </div>
-                <div class="half-width">
-                    <label for="city">Ciudad</label>
-                    <input type="text" id="city" name="city" placeholder="Ciudad" minlength="4" maxlength="50" required>
-                </div>
-
-                <div class="uploadDocuments">
-                    <label for="legalDocument">Sube tu documento legal</label>
-                    <input type="file" id="legalDocument" name="legalDocument" accept="image/*,application/pdf" onchange="showFileName()" required>
-                    <span class="file-name" id="file-name">No se ha seleccionado ningún archivo IMG o PDF</span>
-                </div>
-
-                <div>
-                    <label for="nit">NIT</label>
-                    <input type="text" id="nit" name="nit" placeholder="NIT" minlength="5" maxlength="12" inputmode="numeric" pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
-                </div>
-
-                <div class="checkbox">
-                    <input type="checkbox" required><span>He leído y acepto los términos del servicio</span>
-                </div>
-
-                <div class="button">
-                    <button type="submit"><span>Next</span></button>
-                </div>
-
+            <div id="label_register_div">
+                <label for="input_empresa_register" id="label_register">
+                    Direccion
+                    <input type="text" id="input_empresa_register" name="direccion" placeholder="Empresa" title="Debe tener entre 10 y 150 caracteres, sin espacio, numeros ni C. especiales" minlength="10" maxlength="150" required>
+                </label>
+                <label for="input_empresa_register" id="label_register">
+                    Ciudad
+                    <input type="text" id="input_empresa_register" name="ciudad" placeholder="Empresa" title="Debe tener entre 4 y 20 caracteres, sin espacio, numeros ni C. especiales" minlength="4" maxlength="20" required>
+                </label>
             </div>
-        </form>
-    </section>
 
-    <script>
-        function showFileName() {
-            const input = document.getElementById('legalDocument');
-            const fileName = document.getElementById('file-name');
-            fileName.textContent = input.files.length > 0 ? input.files[0].name : 'No se ha seleccionado ningún archivo';
-        }
-    </script>
+            <label for="input_documento_register" id="label_register">
+                Subir documento
+                <input type="file" id="input_documento_register" name="documento">
+            </label>
+
+            <label for="input_nit_register" id="label_register">
+                Nit
+                <input type="text" id="input_nit_register" name="nit" title="Debe tener 12 caracteres, sin espacio, numeros ni C. especiales" minlength="12" maxlength="12" required>
+            </label>
+
+            <input type="submit" name="enviar" value="Ingresar">
+
+            <a id="ya_tienes_cuenta" href="login">¿Ya tienes cuenta?</a>
+        </form>
+    </main>
 </body>
 
 </html>

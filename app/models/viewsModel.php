@@ -6,7 +6,8 @@ class viewsModel
 {
     protected function obtenerVistasModelo($vista)
     {
-        $listaBlanca = array("dashboard", "codigosala");
+        $listaBlanca = ["dashboardAdmin", "dashboardAdminGeneral", "newRoom", "user", "usuarioPorAceptar"];
+
 
         if (in_array($vista, $listaBlanca)) {
             if (is_file("./app/views/content/" . $vista . "-view.php")) {

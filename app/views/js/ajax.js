@@ -88,54 +88,6 @@ function alertas_ajax(alerta){
     }
 }
 
-/* Procesamiento de cookies */
-document.addEventListener('DOMContentLoaded', function() {
-    deleteCookie('cookies_accepted');
-
-    document.getElementById('cookie-banner').style.display = 'block';
-
-    document.getElementById('accept-cookies').addEventListener('click', function() {
-        setCookie('cookies_accepted', 'true', 1); 
-        guardarPreferenciaCookies('true'); 
-        document.getElementById('cookie-banner').style.display = 'none';
-    });
-
-    document.getElementById('reject-cookies').addEventListener('click', function() {
-        setCookie('cookies_accepted', 'false', 1); 
-        guardarPreferenciaCookies('false'); 
-        document.getElementById('cookie-banner').style.display = 'none';
-    });
-
-    function setCookie(name, value, days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        const expires = "expires=" + date.toUTCString();
-        document.cookie = name + "=" + value + ";" + expires + ";path=/";
-    }
-
-    function deleteCookie(name) {
-        document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    }
-
-    function guardarPreferenciaCookies(preferencia) {
-        const nickname = document.getElementById('nickname').value; 
-    
-        fetch('guardar_preferencia_cookies.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: `cookies_accepted=${preferencia}&nickname=${nickname}` 
-        })
-        .then(response => response.text())
-        .then(data => {
-            console.log('Respuesta del servidor:', data);
-        })
-        .catch((error) => {
-            console.error('Error al guardar la preferencia de cookies:', error);
-        });
-    }})
-
 
 
 /* Boton cerrar sesion */

@@ -1,48 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="stylesheet" href=".\app\views\css\style-login.css">
+
     <?php require_once("./app/views/inc/head.php"); ?>
+
 </head>
 
-<body>
-    <?php require_once("./app/views/inc/navbar.php") ?>
+<body id="body_login">
+    <main id="main_login">
 
-    <main>
-        <div class="login-container">
-            <form action="index.php?views=login" method="post">
-                <label for="username">Usuario o Correo Electrónico</label>
-                <input type="text" id="username" name="username" placeholder="Usuario o Correo Electrónico" 
-                    required minlength="8" maxlength="50"
-                    pattern="([A-Za-z0-9_]{8,30}|([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}))"
-                    title="Debe ser un nombre de usuario de 8-30 caracteres o una dirección de correo electrónico válida.">
+        <form action="#" method="POST" id="form_login" class="FormularioAjax">
+            <h1>Ingresa</h1>
+            <label for="input_usuario" id="label_login">
+                Usuario o correo
+                <input type="text" id="input_usuario_login" placeholder="Usuario" placeholder="Usuario o correo" title="Debe tener entre 4 y 50 caracteres, sin espacio, numeros ni C. especiales" minlength="10" maxlength="100" required>
+            </label>
 
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Password" 
-                    required minlength="8" maxlength="20" 
-                    title="La contraseña debe tener entre 8 y 20 caracteres.">
+            <label for="input_contraseña" id="label_login">
+                Contraseña
+                <input type="password" id="input_contraseña_login" placeholder="Contraseña" placeholder="Usuario o correo" title="Debe tener entre 4 y 50 caracteres, sin espacio, numeros ni C. especiales" minlength="10" maxlength="50" required>
+            </label>
 
-                <div class="checkbox-container">
-                    <input type="checkbox" id="keep-signed-in">
-                    <label for="keep-signed-in">Keep me signed in.</label>
-                </div>
+            <label for="input_checkbox" id="label_checkbox_login">
+                <input type="checkbox" id="input_checkbox"v checked>Mantenerme logueado
+            </label>
 
-                <button type="submit" class="sign-in-button">Sign in</button>
-
-                <a href="#" class="forgot-password">Forgot your password?</a>
-
-                <a href="http://localhost/jukebox/app/views/content/register-view.php"id="registro" class="register-button">Registro</a>
-
-                <?php if (!empty($error)) : ?>
-                    <div class="error-message">
-                        <?php echo $error; ?>
-                    </div>
-                <?php endif; ?>
-            </form>
-
-        </div>
+            <input type="submit" value="Ingresar">
+            <a id="no_tienes_cuenta" href="register">¿No tienes cuenta?</a>
+        </form>
     </main>
-    
 </body>
-</html>
 
+</html>

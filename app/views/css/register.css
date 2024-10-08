@@ -1,0 +1,194 @@
+#body_register {
+    width: 100%;
+    height: 100%;
+    padding: 0 6% 2% 6%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+/* Estilos para el contenedor principal */
+#main_register {
+    width: 60%;
+    height: 1200px;
+    margin-top: 100px;
+}
+
+.imgñ{
+    object-fit: cover;
+}
+
+#form_register {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#form_register > h1 {
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#label_register {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+    color: white;
+    margin-bottom: 15px;
+}
+
+#form_register > #label_register_div {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+#input_nombres_register,
+#input_apellidos_register,
+#input_correo_register,
+#input_tipo_documento_register,
+#input_usuario_register,
+#input_contraseña_register,
+#input_empresa_register,
+#input_documento_register,
+#input_nit_register {
+    width: 100%;
+    height: 60%;
+    background-color: var(--color_fondo_inputs);
+    padding: 25px 5px 25px 30px;
+    border: 1px solid rgb(50, 57, 89);
+    border-radius: 10px;
+    color: white;
+    caret-color: white;
+}
+
+#input_documento_register {
+    width: 100%;
+    height: 80px;
+    background-color: var(--color_fondo_inputs);
+    padding: 20px 10px;
+    border: 1px solid rgb(50, 57, 89);
+    border-radius: 10px;
+    color: white;
+    caret-color: white;
+    cursor: pointer;
+}
+
+#input_documento_register::-webkit-file-upload-button {
+    background-color: var(--color_botones);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+#input_documento_register {
+    font-size: inherit;
+}
+
+input::placeholder {
+    color: rgb(147, 155, 196);
+}
+
+input:focus {
+    outline: 2px solid white;
+}
+
+#form_register > input[type="submit"] {
+    background-color: var(--color_botones);
+    border: none;
+    padding: 20px 100px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+#ya_tienes_cuenta {
+    text-decoration: none;
+    color: white;
+    margin-top: 20px;
+}
+
+/* Muchachos, esto se usa para eliminar el selector de número en campos de tipo number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+@media (max-width: 1200px) {
+    #main_register {
+        width: 80%;
+        height: auto;
+    }
+
+    #form_register {
+        width: 90%;
+    }
+
+    #label_register,
+    #form_register > #label_register_div {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    #form_register > #label_register_div {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #input_nombres_register,
+    #input_apellidos_register,
+    #input_correo_register,
+    #input_tipo_documento_register,
+    #input_usuario_register,
+    #input_contraseña_register,
+    #input_empresa_register,
+    #input_documento_register,
+    #input_nit_register {
+        height: auto;
+    }
+
+    #form_register > input[type="submit"] {
+        padding: 15px 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    #main_register {
+        width: 100%;
+    }
+
+    #form_register > input[type="submit"] {
+        width: 100%;
+        padding: 15px;
+    }
+
+    #label_register {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #form_register > #label_register_div {
+        flex-direction: column;
+    }
+}
