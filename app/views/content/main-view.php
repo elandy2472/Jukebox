@@ -102,6 +102,15 @@
 
         </footer>
     </main>
+
+    <div id="cookie-banner" style="display:none; position: fixed; bottom: 0; width: 100%; background-color: #ffff; padding: 20px; text-align: center;">
+        <p>Usamos cookies para mejorar tu experiencia. ¿Aceptas el uso de cookies?</p>
+        <button id="accept-cookies" style="margin-right: 10px; margin-top: 10px; padding: 15px;">Aceptar</button>
+        <button id="reject-cookies" style="padding: 15px;">Rechazar</button>
+    </div>
+
+    <script src="./app/views/js/ajax.js"></script>
+
 </body>
 
 </html>
