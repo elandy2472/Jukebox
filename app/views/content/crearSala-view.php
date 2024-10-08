@@ -6,6 +6,15 @@ function generateRoomCode() {
     return strtoupper(substr(str_shuffle(str_repeat('abcdefghijklmnopqrstuvwxyz0123456789', 6)), 0, 6));
 }
 
+function isRoomCodeUnique($modelo, $roomCode) {
+    // Implementa la lógica para verificar si el código de sala existe
+    $query = "SELECT COUNT(*) FROM sala WHERE codigoSala = :codigoSala";
+    $stmt = $modelo->prepare($query);
+    $stmt->bindParam(':codigoSala', $roomCode);
+    $stmt->execute();
+    return $stmt->fetchColumn() == 0; // Retorna true si el código es único
+}
+
 $roomName = '';
 $error = '';
 
@@ -13,7 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $roomName = trim($_POST['room_name']);
     
     if (!empty($roomName)) {
-        $roomCode = generateRoomCode();
+        // Conectar a la base de datos y crear un objeto de mainModel
+        $modelo = new \app\models\mainModel();
         
         // Aforo final predeterminado
         $aforoFinalSala = 30;
@@ -21,8 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Obtener el documento del usuario que está iniciando sesión
         $documento = $_SESSION['documento']; // Asegúrate de que esto está establecido en la sesión
 
-        // Conectar a la base de datos y crear un objeto de mainModel
-        $modelo = new \app\models\mainModel();
+        do {
+            $roomCode = generateRoomCode();
+        } while (!isRoomCodeUnique($modelo, $roomCode)); // Generar un nuevo código si ya existe
         
         // Preparar los datos para guardar
         $datos = [

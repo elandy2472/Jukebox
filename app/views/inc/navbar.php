@@ -15,7 +15,7 @@
                     <a href="#">Empresas</a>
                 </li>
                 <li>
-                    <a id="boton_iniciar_sesion" href="#">Inicia sesion</a>
+                    <a id="boton_iniciar_sesion" href="login">Inicia sesion</a>
                 </li>
             </div>
         </ul>
