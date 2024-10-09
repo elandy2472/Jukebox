@@ -5,33 +5,29 @@
     <?php require_once("./app/views/inc/head.php"); ?>
 </head>
 
-<body>
+<body id="body_login">
     <?php require_once("./app/views/inc/navbar.php") ?>
 
-    <main>
-        <div class="login-container">
-            <form action="index.php?views=login" method="post">
-                <label for="username">Usuario o Correo Electrónico</label>
+    <main id="main_login">
+
+            <form action="index.php?views=login" method="post" id="form_login">
+                <label for="username" id="label_login">Usuario o Correo Electrónico
                 <input type="text" id="username" name="username" placeholder="Usuario o Correo Electrónico" 
                     required minlength="8" maxlength="50"
                     pattern="([A-Za-z0-9_]{8,30}|([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}))"
                     title="Debe ser un nombre de usuario de 8-30 caracteres o una dirección de correo electrónico válida.">
-
-                <label for="password">Password</label>
+</label>
+                <label for="password" id="label_login">Password
                 <input type="password" id="password" name="password" placeholder="Password" 
                     required minlength="8" maxlength="20" 
                     title="La contraseña debe tener entre 8 y 20 caracteres.">
+</label>
+                    <label for="input_checkbox" id="label_checkbox_login">
+                <input type="checkbox" id="input_checkbox"v checked>Mantenerme logueado
+            </label>
 
-                <div class="checkbox-container">
-                    <input type="checkbox" id="keep-signed-in">
-                    <label for="keep-signed-in">Keep me signed in.</label>
-                </div>
-
-                <button type="submit" class="sign-in-button">Sign in</button>
-
-                <a href="#" class="forgot-password">Forgot your password?</a>
-
-                <a href="http://localhost/jukebox/app/views/content/register-view.php"id="registro" class="register-button">Registro</a>
+                <input type="submit" value="Ingresar">
+                <a id="no_tienes_cuenta" href="register">¿No tienes cuenta?</a>
 
                 <?php if (!empty($error)) : ?>
                     <div class="error-message">
@@ -40,7 +36,7 @@
                 <?php endif; ?>
             </form>
 
-        </div>
+        
     </main>
     
 </body>
