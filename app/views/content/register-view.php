@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/register-view.css">
+    <link rel="stylesheet" href="<?php echo APP_URL; ?>app/views/css/register-view.css">
     <title>Register</title>
 </head>
 
