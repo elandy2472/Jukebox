@@ -15,7 +15,10 @@ class mainModel
     private $DB_USER = DB_USER;
     private $DB_PASS = DB_PASS;
 
-    private $db;
+    public $db;
+    public function getDB() {
+        return $this->db;
+    }
     public function __construct() {
         $this->db = $this->conectar();
     }
@@ -251,7 +254,7 @@ class mainModel
             $resultado = $sql->fetch(PDO::FETCH_ASSOC);
 
             if ($contrasena === $resultado['contrasena']) {
-                return true; 
+                return $resultado; 
             } else {
                 
                 error_log("Contraseña no válida para usuario o correo: $usuarioOcorreo");

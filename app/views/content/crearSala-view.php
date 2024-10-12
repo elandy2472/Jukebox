@@ -9,7 +9,7 @@ function generateRoomCode() {
 function isRoomCodeUnique($modelo, $roomCode) {
     // Implementa la lógica para verificar si el código de sala existe
     $query = "SELECT COUNT(*) FROM sala WHERE codigoSala = :codigoSala";
-    $stmt = $modelo->prepare($query);
+    $stmt = $modelo->db->prepare($query);
     $stmt->bindParam(':codigoSala', $roomCode);
     $stmt->execute();
     return $stmt->fetchColumn() == 0; // Retorna true si el código es único
@@ -29,7 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $aforoFinalSala = 30;
         
         // Obtener el documento del usuario que está iniciando sesión
-        $documento = $_SESSION['documento']; // Asegúrate de que esto está establecido en la sesión
+        $documento = $_SESSION['usuario']['documento']; // Asegúrate de que esto está establecido en la sesión
+        print($documento);
 
         do {
             $roomCode = generateRoomCode();
@@ -64,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $modelo->guardarDatos('sala', $datos);
             $_SESSION['room_code'] = $roomCode;
             $_SESSION['room_name'] = $roomName;
-            header("Location: codigosala"); // Redireccionar después de crear la sala
+            // header("Location: codigosala"); // Redireccionar después de crear la sala
             exit;
         } catch (Exception $e) {
             $error = "Error al crear la sala: " . $e->getMessage();

@@ -25,7 +25,8 @@ class viewsController extends viewsModel {
             session_start();
             
             // Almacenar el usuario en la sesión
-            $_SESSION['usuario'] = $usuarioOcorreo;
+            $_SESSION['usuario'] = $resultado;
+            
     
             // Consulta para obtener el NIT basado en el usuario o correo
             $nit = $modelo->obtenerNITPorUsuarioOCorreo($usuarioOcorreo);
