@@ -1,0 +1,146 @@
+body {
+    background-color: #0c0f25;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150vh;
+    margin: 0;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    
+}
+
+section.register {
+    margin-left: 30px;
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+::placeholder{
+    padding-left: 12px;
+}
+form .content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.content div{
+    width: 90%;
+}
+.content .half-width {
+    width: 40%;
+    margin-left: 10px;
+}
+
+label {
+    display: block;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="file"] {
+    width: 100%;
+    padding: 15px 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #1c2146;
+    color: #ffffff;
+    font-size: 0.9em;
+}
+
+input[type="file"] {
+    background-color: transparent;
+    
+}
+
+input::placeholder {
+    color: #6f7287;
+}
+
+input:focus {
+    outline: none;
+    background-color: #272d5a;
+}
+
+.uploadDocuments {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.uploadDocuments input[type="file"] {
+    display: none; 
+}
+
+.uploadDocuments label {
+    background-color: #272d5a;
+    color: #6f7287;
+    padding: 10px 20px;
+    margin-left: 12px;
+    border-radius: 5px;
+    width: 90%;
+    text-align: center;
+    font-size: 1em;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.uploadDocuments label:hover {
+    background-color: #3b5cf0;
+}
+
+
+.uploadDocuments .file-name {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #6f7287;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.checkbox input {
+    margin-right: 10px;
+    
+}
+.checkbox input:focus{
+    background-color: #2042f4;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.button button {
+    background-color: #2042f4;
+    color: #ffffff;
+    border: none;
+    padding: 10px 80px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button button:hover {
+    background-color: #3b5cf0;
+}
+
+.button button span {
+    font-size: 1em;
+}

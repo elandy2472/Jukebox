@@ -1,0 +1,362 @@
+:root{
+  --color_boton_nueva_sala :rgb(24, 61, 228);
+  --color_principal: #111521;
+  --color_hover: #24284a;
+  --color_botones_hover:rgba(24, 61, 228, 0.427);
+}
+
+#body_dashboardAdmin {
+  width: 100vw;
+  height: 100vh;
+  /* background-color: red; */
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#aside_dashboardAdmin {
+  width: 15%;
+  height: 100%;
+  /* background-color: rgb(0, 238, 255); */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#contenedor_titulo_y_opciones_arriba, #contenedor_titulo_y_opciones_abajo {
+  width: 100%;
+  height: 40%;
+  /* background-color: yellow; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#contenedor_titulo_y_opciones_abajo {
+    justify-content: end;
+  }
+
+#titulo_panel_control {
+  width: 100%;
+  height: 20%;
+  /* background-color: rebeccapurple; */
+  text-align: start;
+  font-size: 16px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#opciones_arriba,#opciones_abajo{
+  width: 100%;
+  height: 60%;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content:end;
+  gap: 10px;
+  align-items: center;
+  list-style: none;
+}
+
+
+/* #contenedor_titulo_y_opciones_abajo > #opciones_abajo */
+
+#li_dashboardAdmin, #li_dashboardMain_abajo {
+  /* background-color: rgb(0, 255, 187); */
+  width: 100%;
+  height: 20%;
+}
+
+#opciones_arriba > #li_dashboardAdmin > #a_dashboardAdmin, #opciones_abajo > #li_dashboardMain_abajo > a{
+  /* background-color: rgb(255, 225, 0); */
+  color: white;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  padding: 14px 40px 14px 30px;
+  display: flex; 
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px 10px;
+}
+
+#opciones_arriba > #li_dashboardAdmin > #a_dashboardAdmin:hover , #opciones_abajo> #li_dashboardMain_abajo > a:hover{
+  background-color: var(--color_hover);
+  transition: all .3s ease-in-out;
+}
+
+#opciones_abajo > #li_dashboardMain_abajo > #a_nueva_sala{
+  background-color: var(--color_boton_nueva_sala);
+}
+#opciones_abajo > #li_dashboardMain_abajo > #a_nueva_sala:hover{
+  background-color: var(--color_botones_hover);
+  transition: all .3s ease-in-out;
+}
+
+
+#main_dashboardAdmin {
+  width: 85%;
+  height: 100%;
+  /* background-color: green; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+#div_dashboardAdmin_arriba{
+    width: 100%;
+    height: 40%;
+    /* background-color: rgb(0, 255, 47); */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+#main_dashboardAdmin > #div_dashboardAdmin_arriba > #contenedor_titulo, #contenedor_cajas_informacion{
+  width: 96%;
+  height: 40%;
+  /* background-color: brown; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+}
+
+#main_dashboardAdmin > #div_dashboardAdmin_arriba > #contenedor_titulo > h1, #main_dashboardAdmin > #div_dashboardAdmin_arriba > #contenedor_titulo > p{
+  width: 100%;
+  height: 40%;
+  /* background-color: rgb(42, 165, 67); */
+  color: white;
+}
+
+
+#main_dashboardAdmin > #div_dashboardAdmin_arriba > #contenedor_titulo >h1{
+  font-size: 36px;
+}
+
+
+#main_dashboardAdmin > #div_dashboardAdmin_arriba > #contenedor_cajas_informacion{
+  flex-direction: row;
+}
+
+#salas_activas, #usuarios_activos{
+width: 20%;
+height: 100%;
+/* background-color: aqua; */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 10px 20px;
+border: 1px solid white;
+border-radius: 10px;
+gap: 15px;
+}
+
+#salas_activas > h4, #salas_activas p, #usuarios_activos > h4, #usuarios_activos > p{
+/* background-color: rebeccapurple; */
+width: 100%;
+height: 40%;
+color: white;
+}
+
+#salas_activas p, #usuarios_activos > p{
+  font-size: 20px;
+  font-weight: 900;
+}
+
+
+
+
+
+
+
+/* El div_table ocupa 100% de ancho y 50% de la altura disponible */
+#div_table {
+  width: 100%;
+  height: 50%;
+  background-color: var(--color_principal);
+  border: 1px solid white;
+  border-radius: 10px;
+  overflow: auto; /* Asegura que el contenido extra no se salga del contenedor */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* La tabla ocupa el 100% de ancho del contenedor */
+#table_salas {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Encabezado fijo (thead) */
+#thead_dashboard_Main {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  background-color: #333;
+  color: #fff;
+  border-radius: 10px 10px 0 0;
+}
+
+#thead_dashboard_Main th {
+  padding: 10px;
+  font-weight: bold;
+  text-align: left;
+  border-bottom: 2px solid #555;
+}
+
+/* El tbody tendrá scroll pero mantendrá las columnas alineadas */
+#tbody_dashboard_Main {
+  display: block;
+  height: 100%;
+  overflow-y: scroll; /* Scroll vertical */
+  width: 100%;
+ /*  background-color: #1b1b1b; */
+}
+
+#tbody_dashboard_Main tr {
+  display: table;
+  table-layout: fixed; /* Asegura que las columnas se alineen con el thead */
+  width: 100%;
+}
+
+#tbody_dashboard_Main td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #444;
+  color: #ddd;
+}
+
+/* Botones dentro de la columna Acciones */
+.btn {
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.ver {
+  background-color: #1e90ff;
+  color: white;
+}
+
+.editar {
+  background-color: #ffa500;
+  color: white;
+}
+
+.eliminar {
+  background-color: #dc143c;
+  color: white;
+}
+
+/* Cambios de estilo al pasar el ratón por los botones */
+.btn:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 1360px) {
+  #titulo_panel_control {
+    font-size: 12px;
+  }
+  #opciones_arriba > #li_dashboardAdmin > #a_dashboardAdmin, #opciones_abajo > #li_dashboardMain_abajo > a{
+    padding: 14px 20px 14px 10px;
+  }
+}
+
+@media (max-width: 1150px) {
+  #opciones_arriba > #li_dashboardAdmin > #a_dashboardAdmin, #opciones_abajo > #li_dashboardMain_abajo > a{
+    font-size: 14px;
+  }
+  #body_dashboardAdmin {
+    padding: 6px 6px;
+  }
+
+  #salas_activas > h4, #usuarios_activos > h4{
+    font-size: 13px;
+    }
+    
+    #salas_activas p, #usuarios_activos > p{
+      font-size: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+  #aside_dashboardAdmin {
+    width: 20%;
+  }
+  #main_dashboardAdmin {
+    width: 80%;
+  }
+  #opciones_arriba > #li_dashboardAdmin > #a_dashboardAdmin, #opciones_abajo > #li_dashboardMain_abajo > a{
+    font-size: 12px;
+  }
+  #opciones_arriba > #li_dashboardAdmin > #a_dashboardAdmin, #opciones_abajo > #li_dashboardMain_abajo > a{
+    padding: 5px;
+    gap: 2px;
+  }
+  #salas_activas, #usuarios_activos{
+    padding: 5px 10px;
+    }
+}
+
+@media (max-width: 600px) {
+  #titulo_panel_control {
+    font-size: 10px;
+  }
+  #aside_dashboardAdmin {
+    width: 26%;
+  }
+  #main_dashboardAdmin {
+    width: 74%;
+  }
+
+  #main_dashboardAdmin > #div_dashboardAdmin_arriba > #contenedor_titulo >h1{
+    font-size: 26px;
+  }
+  
+  #salas_activas, #usuarios_activos{
+    padding: 5px 5px;
+    }
+
+    #thead_dashboard_Main th {
+      padding: 5px;
+      font-size: 14px;
+    }
+    #tbody_dashboard_Main td {
+      padding: 5px;
+      font-size: 14px;
+    }
+    .btn {
+      padding: 5px 5px;
+      width: 100%;
+    }
+    #main_dashboardAdmin > #div_dashboardAdmin_arriba > #contenedor_cajas_informacion{
+      flex-direction: column;
+      height: 60%;
+    }
+    
+    #salas_activas, #usuarios_activos{
+    width: 50%;
+    height: 35%;
+    text-align: center;
+    padding: 5px 0;
+    gap: 2px;
+    }
+    #salas_activas p, #usuarios_activos > p{
+      font-size: 14px;
+    }
+}
