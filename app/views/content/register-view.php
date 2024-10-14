@@ -12,7 +12,7 @@
     <section class="register">
 
         <h2>Registra tu empresa</h2>
-        <form action="../../controllers/registerController.php" method="post" enctype="multipart/form-data">
+        <form action="./app/controllers/registerController.php" method="post" enctype="multipart/form-data">
 
             <div class="content">
 

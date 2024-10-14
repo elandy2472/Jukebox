@@ -61,7 +61,7 @@ class mainModel
         }
     }
 
-    protected function guardarDatos($tabla, $datos,)
+    public function guardarDatos($tabla, $datos,)
     {
         $query = "INSERT INTO $tabla (";
 
