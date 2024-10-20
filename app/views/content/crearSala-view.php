@@ -1,19 +1,25 @@
 <?php
-session_start();
-require_once '../../models/mainModel.php';
-;// Asegúrate de incluir el modelo
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Incluir el modelo
+require_once 'app/models/mainModel.php';
+
+// Asegúrate de que el modelo esté correctamente incluido
+$modelo = new \app\models\mainModel();
+
 
 function generateRoomCode() {
     return strtoupper(substr(str_shuffle(str_repeat('abcdefghijklmnopqrstuvwxyz0123456789', 6)), 0, 6));
 }
 
 function isRoomCodeUnique($modelo, $roomCode) {
-    // Implementa la lógica para verificar si el código de sala existe
     $query = "SELECT COUNT(*) FROM sala WHERE codigoSala = :codigoSala";
-    $stmt = $modelo->db->prepare($query);
+    $stmt = $modelo->getDb()->prepare($query); // Usar el getter para obtener la conexión
     $stmt->bindParam(':codigoSala', $roomCode);
     $stmt->execute();
-    return $stmt->fetchColumn() == 0; // Retorna true si el código es único
+    return $stmt->fetchColumn() == 0;
 }
 
 $roomName = '';
@@ -28,10 +34,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         // Aforo final predeterminado
         $aforoFinalSala = 30;
+        print_r($_SESSION);
         
-        // Obtener el documento del usuario que está iniciando sesión
-        $documento = $_SESSION['usuario']['documento']; // Asegúrate de que esto está establecido en la sesión
-        print($documento);
+        // Verifica si 'documento' existe en la sesión
+        $documento = isset($_SESSION['documento']) ? $_SESSION['documento'] : null;
+
+        if (!$documento) {
+            $error = "Error: No se encontró el documento del usuario en la sesión.";
+            echo htmlspecialchars($error); // Mostrar un mensaje de error amigable
+            exit; // Detener la ejecución si no hay documento
+        }
+
 
         do {
             $roomCode = generateRoomCode();
@@ -66,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $modelo->guardarDatos('sala', $datos);
             $_SESSION['room_code'] = $roomCode;
             $_SESSION['room_name'] = $roomName;
-            // header("Location: codigosala"); // Redireccionar después de crear la sala
+            header("Location: codigosala"); // Redireccionar después de crear la sala
             exit;
         } catch (Exception $e) {
             $error = "Error al crear la sala: " . $e->getMessage();

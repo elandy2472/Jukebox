@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (!isset($_SESSION['room_code']) || !isset($_SESSION['room_name'])) {
     header("Location: crearSala-view.php");

@@ -5,6 +5,7 @@ require_once("./autoload.php");
 require_once("./app/views/inc/session_start.php");
 
 use app\controllers\viewsController;
+use app\controllers\SalaController;
 
 $viewsController = new viewsController();
 
@@ -17,6 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset(
         $error = $resultado; // Puedes usar esta variable para mostrar un mensaje de error en la vista
     }
 }
+
+// Verificar si se está accediendo a la sala
+if ($_SERVER['REQUEST_URI'] === '/Jukebox/sala' && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $salaController = new SalaController();
+    $salaController->ingresarSala();
+    exit; // Salir después de manejar la solicitud para evitar cargar la vista nuevamente
+}
+
 
 // Obtener la vista solicitada a través de GET
 if (isset($_GET["views"])) {

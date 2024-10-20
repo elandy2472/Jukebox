@@ -11,7 +11,7 @@
 
     <main id="main_login">
 
-        <form action="index.php?views=login" method="post" id="form_login">
+        <form action="login" method="post" id="form_login">
             <label for="username" id="label_login">Usuario o Correo Electrónico
                 <input type="text" id="username" name="username" placeholder="Usuario o Correo Electrónico"
                     required minlength="8" maxlength="50"

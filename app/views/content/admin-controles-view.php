@@ -21,7 +21,7 @@
             <li><a href="#">Configuración</a></li>
         </ul>
         <div class="sidebar-footer">
-            <a href="#">+ Nueva sala</a>
+            <a href="crearsala">+ Nueva sala</a>
             <a href="#">Invitar equipo</a>
             <a href="#">Comentarios</a>
             <a href="#">Ayuda y documentación</a>
