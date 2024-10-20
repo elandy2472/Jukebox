@@ -15,6 +15,7 @@ class viewsController extends viewsModel {
 
         return $respuesta;
     }
+    
     public function iniciarSesionControlador($usuarioOcorreo, $contrasena) {
         $modelo = new mainModel();
         // Validar las credenciales del usuario
@@ -30,10 +31,15 @@ class viewsController extends viewsModel {
     
             // Consulta para obtener el NIT basado en el usuario o correo
             $nit = $modelo->obtenerNITPorUsuarioOCorreo($usuarioOcorreo);
-    
-            if ($nit) {
-                // Guardar el NIT en la sesión
+            $documento = $modelo->obtenerDocumentoPorUsuarioOCorreo($usuarioOcorreo);
+
+            if ($nit && $documento) {
+                // Guardar NIT y documento en la sesión
                 $_SESSION['nit'] = $nit;
+                $_SESSION['documento'] = $documento;
+                print_r($_SESSION);
+
+                // Redirigir al dashboard del administrador
                 header("Location: dashboardAdmin");
             } else {
                 return "No se encontró el NIT del usuario";
@@ -50,7 +56,7 @@ class viewsController extends viewsModel {
         }
     
         if (!isset($_SESSION["usuario"])) {
-            header("Location: index.php?views=login");
+            header("Location: ../login");
             exit();
         }
     }

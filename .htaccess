@@ -1,7 +1,4 @@
 RewriteEngine On
 Options All -Indexes
 
-RewriteRule ^sala/([a-zA-Z0-9]+)$ app/controllers/reproductor.html [L]
-RewriteRule ^crearsala$ app/views/content/crearSala-view.php [L]
-RewriteRule ^codigosala$ app/views/content/codigoSala-view.php [L]
 RewriteRule ^([a-zA-Z0-9/ñÑ-]+)$ index.php?views=$1

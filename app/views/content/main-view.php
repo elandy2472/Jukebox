@@ -19,14 +19,14 @@
                 <p>Solo ingresa un apodo, y el codigo de una sala y a disfrutar</p>
             </div>
             <div class="inputs_entrar_sala">
-                <form class="FormularioAjax" action="" method="POST" id="formulario_ingresar_sala" onsubmit="return validate(this)">
+                <form action="/Jukebox/sala" method="POST" id="formulario_ingresar_sala">
                     <label for="nickname" id="lbl_nickname">
                         Apodo
                         <input type="text" id="nickname" name="nickname" placeholder="Apodo" minlength="4" maxlength="15">
                     </label>
                     <label for="codigo" id="lbl_codigo">
                         Codigo
-                        <input type="text" id="codigo" name="codigo" placeholder="Codigo de sala" minlength="10" maxlength="12">
+                        <input type="text" id="codigo" name="codigo" placeholder="Codigo de sala" minlength="6" maxlength="6">
                     </label>
                     <input type="submit" id="boton_ingresar_sala" value="Enviar">
                 </form>

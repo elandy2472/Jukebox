@@ -33,7 +33,7 @@
         <div id="contenedor_titulo_y_opciones_abajo">
             <ul id="opciones_abajo">
                 <li id="li_dashboardMain_abajo">
-                    <a id="a_nueva_sala" href="newRoom"><i class='bx bx-plus'></i> Nueva Sala</a>
+                    <a id="a_nueva_sala" href="crearsala"><i class='bx bx-plus'></i> Nueva Sala</a>
                 </li>
                 <li id="li_dashboardMain_abajo">
                     <a href="#"><i class='bx bx-bell'></i> Sugerencias</a>

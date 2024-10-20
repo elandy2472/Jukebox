@@ -23,6 +23,11 @@ class mainModel
         $this->db = $this->conectar();
     }
 
+    // Getter para acceder a la conexión de la base de datos
+    public function getDb() {
+        return $this->db;
+    }
+
 
 
 
@@ -241,6 +246,7 @@ class mainModel
 {
     try {
         $usuarioOcorreo = $this->limpiarCadena($usuarioOcorreo);
+        
 
         $sql = $this->conectar()->prepare("
             SELECT * 
@@ -261,7 +267,6 @@ class mainModel
                 return false; 
             }
         } else {
-            
             error_log("Usuario o correo no encontrado: $usuarioOcorreo");
             return false; 
         }
@@ -270,5 +275,38 @@ class mainModel
         return false;
     }
 }
+
+public function obtenerDocumentoPorUsuarioOCorreo($usuarioOcorreo) {
+    // Preparar la consulta para obtener el documento
+    $sql = "SELECT documento FROM usuarioempresa WHERE usuario = :usuarioOcorreo OR correo = :usuarioOcorreo";
+    
+    $query = $this->db->prepare($sql);
+    $query->bindParam(":usuarioOcorreo", $usuarioOcorreo, PDO::PARAM_STR);
+    $query->execute();
+
+    $resultado = $query->fetch(PDO::FETCH_ASSOC);
+
+    // Retornar el documento si existe
+    if ($resultado) {
+        return $resultado['documento'];
+    } else {
+        return null;
+    }
+}
+
+public function verificarCodigoSala($codigo)
+    {
+        // Conectar a la base de datos
+        $sql = "SELECT COUNT(*) FROM sala WHERE codigoSala = :codigo";
+
+        // Preparar la consulta
+        $query = $this->db->prepare($sql);
+        $query->bindParam(':codigo', $codigo);
+        $query->execute();
+
+        // Retornar verdadero si existe, falso si no
+        return $query->fetchColumn() > 0;
+    }
+
 
 }

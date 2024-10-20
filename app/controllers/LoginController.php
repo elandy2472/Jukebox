@@ -14,8 +14,9 @@ require_once ('../../config/server.php');
 // Verificar si el método de la solicitud es POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $correo = $_POST['correo'];
+    print($correo);
     $contrasena = $_POST['contrasena'];
-
+    print($contrasena);
     $stmt = $conn->prepare("SELECT correo, contrasena FROM usuarioempresa WHERE correo = ?");
     
     // Vincular parámetros
