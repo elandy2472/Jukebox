@@ -6,13 +6,13 @@ $password = "";
 $dbname = "jukebox";
 
 try {
- 
+
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {  
-        
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
         $name1 = $_POST['name1'];
         $name2 = $_POST['name2'];
         $last1 = $_POST['last1'];
@@ -26,7 +26,7 @@ try {
         $city = $_POST['city'];
         $nit = $_POST['nit'];
 
-   
+
         $sql_empresa = "INSERT INTO empresa (nit, nombre, direccion, ciudad) VALUES (:nit, :nameEnter, :address, :city)";
         $stmt_empresa = $conn->prepare($sql_empresa);
         $stmt_empresa->bindParam(':nit', $nit);
@@ -35,7 +35,7 @@ try {
         $stmt_empresa->bindParam(':city', $city);
         $stmt_empresa->execute();
 
-       
+
         $sql_usuarioempresa = "INSERT INTO usuarioempresa (documento, nombres, apellidos, correo, usuario, contrasena, nit) 
                                VALUES (:cc, :nombres, :apellidos, :email, :username, :password, :nit)";
         $stmt_usuarioempresa = $conn->prepare($sql_usuarioempresa);
@@ -52,7 +52,8 @@ try {
 
         $stmt_usuarioempresa->execute();
 
-        echo "Registro exitoso, Redireccionar a vista home";
+        header("Location: ../../");
+        
     }
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
@@ -60,5 +61,3 @@ try {
 
 
 $conn = null;
-
-?>

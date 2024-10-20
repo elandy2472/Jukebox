@@ -34,7 +34,7 @@ class viewsController extends viewsModel {
             if ($nit) {
                 // Guardar el NIT en la sesión
                 $_SESSION['nit'] = $nit;
-                header("Location: dashboard");
+                header("Location: dashboardAdmin");
             } else {
                 return "No se encontró el NIT del usuario";
             }

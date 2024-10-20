@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once '../../models/mainModel.php'; // Asegúrate de incluir el modelo
+require_once '../../models/mainModel.php';
+;// Asegúrate de incluir el modelo
 
 function generateRoomCode() {
     return strtoupper(substr(str_shuffle(str_repeat('abcdefghijklmnopqrstuvwxyz0123456789', 6)), 0, 6));
