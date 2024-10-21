@@ -112,6 +112,11 @@ input[type="checkbox"] {
     color: white;
   }
   
+  #olvido_contraseña{
+    text-decoration: none;
+    color: rgb(24, 61, 228);
+  }
+
   @media (max-width: 768px) {
     #form_login > input[type="submit"] {
         padding: 15px 50px;
