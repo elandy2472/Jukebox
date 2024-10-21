@@ -29,6 +29,7 @@
 
             <input type="submit" value="Ingresar">
             <a id="no_tienes_cuenta" href="register">¿No tienes cuenta?</a>
+            <a id="olvido_contraseña" href="">¿Olvido su contraseña?</a>
 
             <?php if (!empty($error)) : ?>
                 <div class="error-message">
