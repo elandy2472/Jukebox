@@ -15,12 +15,29 @@ class mainModel
     private $DB_USER = DB_USER;
     private $DB_PASS = DB_PASS;
 
+    private $db;
+    public function __construct() {
+        $this->db = $this->conectar();
+    }
+
+    // Getter para acceder a la conexión de la base de datos
+    public function getDb() {
+        return $this->db;
+    }
+
+
+
+
     protected function conectar()
-    {
-        $conexion = new PDO("mysql:host=" . $this->DB_SERVER . "dbname=" . $this->DB_NAME, $this->DB_USER, $this->DB_PASS);
+{
+    try {
+        $conexion = new PDO("mysql:host=" . $this->DB_SERVER . ";dbname=" . $this->DB_NAME, $this->DB_USER, $this->DB_PASS);
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conexion;
+    } catch (PDOException $e) {
+        die('Error en la conexión: ' . $e->getMessage());
     }
+}
 
     public function limpiarCadena($cadena)
     {
@@ -49,7 +66,7 @@ class mainModel
         }
     }
 
-    protected function guardarDatos($tabla, $datos,)
+    public function guardarDatos($tabla, $datos,)
     {
         $query = "INSERT INTO $tabla (";
 
@@ -201,4 +218,90 @@ class mainModel
         $tabla .= '</nav>';
         return $tabla;
     }
+
+    public function obtenerNITPorUsuarioOCorreo($usuarioOcorreo) {
+        $sql = "SELECT nit FROM usuarioempresa WHERE usuario = :usuarioOcorreo OR correo = :usuarioOcorreo";
+        
+        $query = $this->db->prepare($sql);
+        $query->bindParam(":usuarioOcorreo", $usuarioOcorreo, PDO::PARAM_STR);
+        $query->execute();
+
+        $resultado = $query->fetch(PDO::FETCH_ASSOC);
+
+        if ($resultado) {
+            return $resultado['nit'];
+        } else {
+            return null;
+        }
+    }
+
+
+
+    public function validarCredenciales($usuarioOcorreo, $contrasena)
+{
+    try {
+        $usuarioOcorreo = $this->limpiarCadena($usuarioOcorreo);
+        
+
+        $sql = $this->conectar()->prepare("
+            SELECT * 
+            FROM usuarioempresa 
+            WHERE (usuario = :usuarioOcorreo OR correo = :usuarioOcorreo)
+        ");
+        $sql->bindParam(':usuarioOcorreo', $usuarioOcorreo);
+        $sql->execute();
+
+        if ($sql->rowCount() > 0) {
+            $resultado = $sql->fetch(PDO::FETCH_ASSOC);
+
+            if ($contrasena === $resultado['contrasena']) {
+                return true; 
+            } else {
+                
+                error_log("Contraseña no válida para usuario o correo: $usuarioOcorreo");
+                return false; 
+            }
+        } else {
+            error_log("Usuario o correo no encontrado: $usuarioOcorreo");
+            return false; 
+        }
+    } catch (PDOException $e) {
+        error_log('Error en la validación de credenciales: ' . $e->getMessage());
+        return false;
+    }
+}
+
+public function obtenerDocumentoPorUsuarioOCorreo($usuarioOcorreo) {
+    // Preparar la consulta para obtener el documento
+    $sql = "SELECT documento FROM usuarioempresa WHERE usuario = :usuarioOcorreo OR correo = :usuarioOcorreo";
+    
+    $query = $this->db->prepare($sql);
+    $query->bindParam(":usuarioOcorreo", $usuarioOcorreo, PDO::PARAM_STR);
+    $query->execute();
+
+    $resultado = $query->fetch(PDO::FETCH_ASSOC);
+
+    // Retornar el documento si existe
+    if ($resultado) {
+        return $resultado['documento'];
+    } else {
+        return null;
+    }
+}
+
+public function verificarCodigoSala($codigo)
+    {
+        // Conectar a la base de datos
+        $sql = "SELECT COUNT(*) FROM sala WHERE codigoSala = :codigo";
+
+        // Preparar la consulta
+        $query = $this->db->prepare($sql);
+        $query->bindParam(':codigo', $codigo);
+        $query->execute();
+
+        // Retornar verdadero si existe, falso si no
+        return $query->fetchColumn() > 0;
+    }
+
+
 }

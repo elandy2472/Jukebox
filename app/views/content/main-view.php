@@ -7,10 +7,10 @@
     <?php require_once("./app/views/inc/head.php"); ?>
 </head>
 
-<body>
+<body id="body_main">
     <?php require_once("./app/views/inc/navbar.php") ?>
 
-    <main>
+    <main id="main_main">
         <section class="section_ingresar_sala" id="section_ingresar_sala">
             <div class="mensaje_section_ingresar_sala">
                 <h1>Pon algo de musica</h1>
@@ -19,21 +19,21 @@
                 <p>Solo ingresa un apodo, y el codigo de una sala y a disfrutar</p>
             </div>
             <div class="inputs_entrar_sala">
-                <form class="FormularioAjax" action="#" method="POST" id="formulario_ingresar_sala">
+                <form action="/Jukebox/sala" method="POST" id="formulario_ingresar_sala">
                     <label for="nickname" id="lbl_nickname">
                         Apodo
-                        <input type="text" id="nickname" name="nickname" placeholder="Ingresa tu Apodo">
+                        <input type="text" id="nickname" name="nickname" placeholder="Apodo" minlength="4" maxlength="15">
                     </label>
                     <label for="codigo" id="lbl_codigo">
                         Codigo
-                        <input type="text" id="codigo" name="codigo" placeholder="Ingresa el codigo de la sala">
+                        <input type="text" id="codigo" name="codigo" placeholder="Codigo de sala" minlength="6" maxlength="6">
                     </label>
                     <input type="submit" id="boton_ingresar_sala" value="Enviar">
                 </form>
             </div>
         </section>
-        <section class="tarjeta_como_funciona_jukebox">
-            <div class="contenedor_tarjeta_como_funciona_titulo" id="tarjeta_como_funciona_jukebox">
+        <section class="tarjeta_como_funciona_jukebox" id="tarjeta_como_funciona_jukebox">
+            <div class="contenedor_tarjeta_como_funciona_titulo" id="contenedor_tarjeta_como_funciona_titulo">
 
                 <h1>Como funciona Jukebox</h1>
 
@@ -57,7 +57,7 @@
                 </div>
             </div>
         </section>
-        <section class="Descripcion_sobre_nosotros" id="Descripcion_sobre_nosotros">
+        <section class="Descripcion_sobre_nosotros" id="descripcion_sobre_nosotros">
             <div class="Descripcion_sobre_nosotros_contenedores_wave">
                 <svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;">
                     <path d="M-168.50,245.56 C371.55,-105.79 328.66,186.50 527.31,68.39 L512.07,229.81 L-20.08,166.82 Z" style="stroke: none; fill: #24284a;"></path>
@@ -80,28 +80,19 @@
                 <img src="app/views/fotos/about_us_4.svg" alt="about_us_1">
             </div>
         </section>
-        <footer>
-            <div class="politicayprivacidad">
-                <a href="#">Politica de privacidad</a>
-                <a href="#">Terminos & condiciones</a>
-            </div>
-            <div class="redes_sociales">
-
-
-                <a href="#"><i class='bx bxl-facebook'></i></a>
-
-                <a href="#"><i class='bx bx-x'></i></a>
-
-                <a href="#"><i class='bx bxl-instagram'></i></a>
-
-
-            </div>
-            <div class="derechos">
-                Jukebox 2024. Todos los derechos reservados &copy;
-            </div>
-
-        </footer>
+        <?php
+        require_once("./app/views/inc/footer.php");
+        ?>
     </main>
+
+    <div id="cookie-banner" style="display:none; position: fixed; bottom: 0; width: 100%; background-color:rgb(25 34 73); padding: 20px; text-align: center; color: white;">
+        <p>Usamos cookies para mejorar tu experiencia. ¿Aceptas el uso de cookies?</p>
+        <button id="accept-cookies" style="margin-right: 10px; margin-top: 10px; padding: 15px;">Aceptar</button>
+        <button id="reject-cookies" style="padding: 15px;">Rechazar</button>
+    </div>
+
+    <script src="./app/views/js/ajax.js"></script>
+
 </body>
 
 </html>
