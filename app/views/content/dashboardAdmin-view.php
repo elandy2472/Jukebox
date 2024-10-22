@@ -1,3 +1,6 @@
+<?php
+require_once('app/controllers/control_inactividad.php'); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 

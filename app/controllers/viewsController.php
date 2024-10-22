@@ -18,27 +18,23 @@ class viewsController extends viewsModel {
     
     public function iniciarSesionControlador($usuarioOcorreo, $contrasena) {
         $modelo = new mainModel();
-        // Validar las credenciales del usuario
+        
         $resultado = $modelo->validarCredenciales($usuarioOcorreo, $contrasena);
     
         if ($resultado) {
-            // Iniciar la sesión
             session_start();
             
-            // Almacenar el usuario en la sesión
             $_SESSION['usuario'] = $usuarioOcorreo;
+            
+            $_SESSION['ultimo_acceso'] = time();
     
-            // Consulta para obtener el NIT basado en el usuario o correo
             $nit = $modelo->obtenerNITPorUsuarioOCorreo($usuarioOcorreo);
             $documento = $modelo->obtenerDocumentoPorUsuarioOCorreo($usuarioOcorreo);
-
+    
             if ($nit && $documento) {
-                // Guardar NIT y documento en la sesión
                 $_SESSION['nit'] = $nit;
                 $_SESSION['documento'] = $documento;
-                print_r($_SESSION);
-
-                // Redirigir al dashboard del administrador
+    
                 header("Location: dashboardAdmin");
             } else {
                 return "No se encontró el NIT del usuario";
@@ -47,6 +43,7 @@ class viewsController extends viewsModel {
             return "Credenciales incorrectas";
         }
     }
+    
     
 
     public function verificarSesion() {

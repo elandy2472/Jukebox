@@ -220,7 +220,6 @@ class mainModel
     }
 
     public function obtenerNITPorUsuarioOCorreo($usuarioOcorreo) {
-        // Conectar a la base de datos y buscar el NIT basado en el usuario o correo
         $sql = "SELECT nit FROM usuarioempresa WHERE usuario = :usuarioOcorreo OR correo = :usuarioOcorreo";
         
         $query = $this->db->prepare($sql);
@@ -229,7 +228,6 @@ class mainModel
 
         $resultado = $query->fetch(PDO::FETCH_ASSOC);
 
-        // Retornar el NIT si existe
         if ($resultado) {
             return $resultado['nit'];
         } else {
