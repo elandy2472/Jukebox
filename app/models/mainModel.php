@@ -23,11 +23,6 @@ class mainModel
         $this->db = $this->conectar();
     }
 
-    // Getter para acceder a la conexión de la base de datos
-    public function getDb() {
-        return $this->db;
-    }
-
 
 
 
@@ -307,6 +302,20 @@ public function verificarCodigoSala($codigo)
         // Retornar verdadero si existe, falso si no
         return $query->fetchColumn() > 0;
     }
+
+    public function guardarCliente($nickname) {
+        try {
+            $db = $this->getDb(); // Asegúrate de tener este método en tu modelo
+            $query = "INSERT INTO clientes (nickname) VALUES (:nickname)";
+            $stmt = $db->prepare($query);
+            $stmt->bindParam(':nickname', $nickname, PDO::PARAM_STR);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error al guardar el cliente: " . $e->getMessage();
+            return false;
+        }
+    }
+    
 
 
 }
