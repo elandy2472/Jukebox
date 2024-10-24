@@ -24,9 +24,11 @@ class viewsController extends viewsModel {
         if ($resultado) {
             session_start();
             
-            $_SESSION['usuario'] = $usuarioOcorreo;
+            $_SESSION['usuario'] = $resultado;
             
             $_SESSION['ultimo_acceso'] = time();
+            // Almacenar el usuario en la sesión
+            
     
             $nit = $modelo->obtenerNITPorUsuarioOCorreo($usuarioOcorreo);
             $documento = $modelo->obtenerDocumentoPorUsuarioOCorreo($usuarioOcorreo);
