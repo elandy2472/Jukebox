@@ -99,6 +99,34 @@
             fileName.textContent = input.files.length > 0 ? input.files[0].name : 'No se ha seleccionado ningún archivo';
         }
     </script>
+<script>
+    document.querySelector("form").addEventListener("submit", function (event) {
+        event.preventDefault(); // Evitar el envío estándar del formulario
+
+        const formData = new FormData(this);
+
+        fetch('./app/controllers/registerController.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'error') {
+                // Mostrar el mensaje de error en el formulario
+                alert(data.message);
+            } else if (data.status === 'success') {
+                // Mostrar notificación de éxito
+                alert(data.message);
+                window.location.href = '../../jukebox/login';
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
+
+
+
+
 </body>
 
 </html>

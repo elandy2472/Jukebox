@@ -144,3 +144,9 @@ input:focus {
 .button button span {
     font-size: 1em;
 }
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
