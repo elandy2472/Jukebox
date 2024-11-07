@@ -1,41 +1,47 @@
 <?php
-require_once '../models/Usuario.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require_once('../models/Usuario.php');
 
 class RestablecerContrasenaController {
-    public function enviarEnlaceRecuperacion() {
-        // Verificar que se haya enviado el email a través del formulario
-        if (isset($_POST['email'])) {
-            $email = $_POST['email'];
-            $usuarioModel = new Usuario();
+    private $usuarioModel;
 
-            // Verificar si el email pertenece a un administrador
-            if ($usuarioModel->esAdministrador($email)) {
-                // Generar una contraseña temporal
-                $contrasenaTemporal = bin2hex(random_bytes(4)); // 8 caracteres hexadecimales
-                $usuarioModel->guardarContrasenaTemporal($email, $contrasenaTemporal);
-                
-                // Enviar el enlace de recuperación por correo
-                $this->enviarCorreoRecuperacion($email, $contrasenaTemporal);
-                echo "Se ha enviado un enlace de recuperación a su correo electrónico.";
-            } else {
-                echo "El correo proporcionado no pertenece a un administrador.";
-            }
-        } else {
-            echo "Por favor, ingrese un correo electrónico.";
-        }
+    public function __construct() {
+        $this->usuarioModel = new Usuario();
     }
 
-    private function enviarCorreoRecuperacion($email, $contrasenaTemporal) {
-        $asunto = "Recuperación de Contraseña - Contraseña Temporal";
-        $mensaje = "Su contraseña temporal es: $contrasenaTemporal. Esta contraseña expirará en 6 minutos.";
-        $cabeceras = 'From: no-reply@tu-sitio.com' . "\r\n" .
-                     'Reply-To: soporte@tu-sitio.com' . "\r\n" .
-                     'X-Mailer: PHP/' . phpversion();
+    public function enviarEnlaceRecuperacion($email) {
+        // Verificar si el email pertenece a un administrador
+        if ($this->usuarioModel->esAdministrador($email)) {
+            // Generar una contraseña temporal segura
+            $contrasenaTemporal = bin2hex(random_bytes(8));
+            $fechaExpiracion = date('Y-m-d H:i:s', strtotime('+6 minutes'));
 
-        mail($email, $asunto, $mensaje, $cabeceras);
+            // Guardar la contraseña temporal en la base de datos
+            $this->usuarioModel->guardarContrasenaTemporal($email, $contrasenaTemporal, $fechaExpiracion);
+
+            // Enviar el correo electrónico con el enlace de recuperación
+            $enlaceRecuperacion = "http://tusitio.com/restablecer.php?token=" . urlencode($contrasenaTemporal);
+            $asunto = "Recuperación de contraseña";
+            $mensaje = "Hola, usa el siguiente enlace para restablecer tu contraseña (válido por 6 minutos): $enlaceRecuperacion";
+            $headers = "From: noreply@tusitio.com";
+
+            if (mail($email, $asunto, $mensaje, $headers)) {
+                echo "Enlace de recuperación enviado al correo.";
+            } else {
+                echo "Error al enviar el correo.";
+            }
+        } else {
+            echo "El correo no pertenece a un administrador.";
+        }
     }
 }
 
-// Instancia del controlador y llamada al método para enviar el enlace de recuperación
-$controlador = new RestablecerContrasenaController();
-$controlador->enviarEnlaceRecuperacion();
+// Manejo de solicitud POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'] ?? '';
+    $controller = new RestablecerContrasenaController();
+    $controller->enviarEnlaceRecuperacion($email);
+}
