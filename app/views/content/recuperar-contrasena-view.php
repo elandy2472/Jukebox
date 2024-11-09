@@ -9,11 +9,10 @@
 </head>
 <body>
     <div class="container">
-        <!-- Icono de candado añadido antes del título -->
         <i class="fas fa-lock lock-icon"></i>
         <h1>Recuperar Contraseña</h1>
         <p>Ingresa tu correo electrónico para recibir un enlace de recuperación.</p>
-        <form action="/app/controllers/restablecerContrasenaController.php" method="POST">
+        <form action="/app/controllers/RecuperacionController.php" method="POST">
             <input type="email" name="email" placeholder="Correo electrónico" required>
             <input type="submit" value="Enviar enlace de recuperación">
         </form>

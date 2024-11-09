@@ -4,6 +4,7 @@ require_once("./config/app.php");
 require_once("./autoload.php");
 require_once("./app/views/inc/session_start.php");
 
+
 use app\controllers\viewsController;
 use app\controllers\SalaController;
 
@@ -43,6 +44,7 @@ $vistasSinAuth = ["main", "index", "login", "404", "register"];
 if (!in_array($vista, $vistasSinAuth)) {
     $viewsController->verificarSesion();
 }
+
 
 ?>
 
