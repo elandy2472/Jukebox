@@ -236,38 +236,37 @@ class mainModel
 
 
     public function validarCredenciales($usuarioOcorreo, $contrasena)
-{
-    try {
-        $usuarioOcorreo = $this->limpiarCadena($usuarioOcorreo);
-        
+    {
+        try {
+            $usuarioOcorreo = $this->limpiarCadena($usuarioOcorreo);
+    
+            $sql = $this->conectar()->prepare("
+                SELECT * 
+                FROM usuarioempresa 
+                WHERE (usuario = :usuarioOcorreo OR correo = :usuarioOcorreo)
+            ");
+            $sql->bindParam(':usuarioOcorreo', $usuarioOcorreo);
+            $sql->execute();
+    
+            if ($sql->rowCount() > 0) {
+                $resultado = $sql->fetch(PDO::FETCH_ASSOC);
 
-        $sql = $this->conectar()->prepare("
-            SELECT * 
-            FROM usuarioempresa 
-            WHERE (usuario = :usuarioOcorreo OR correo = :usuarioOcorreo)
-        ");
-        $sql->bindParam(':usuarioOcorreo', $usuarioOcorreo);
-        $sql->execute();
-
-        if ($sql->rowCount() > 0) {
-            $resultado = $sql->fetch(PDO::FETCH_ASSOC);
-
-            if ($contrasena === $resultado['contrasena']) {
-                return $resultado; 
+                if (password_verify($contrasena, $resultado['contrasena'])) {
+                    return $resultado; 
+                } else {
+                    error_log("Contraseña no válida para usuario o correo: $usuarioOcorreo");
+                    return false; 
+                }
             } else {
-                
-                error_log("Contraseña no válida para usuario o correo: $usuarioOcorreo");
+                error_log("Usuario o correo no encontrado: $usuarioOcorreo");
                 return false; 
             }
-        } else {
-            error_log("Usuario o correo no encontrado: $usuarioOcorreo");
-            return false; 
+        } catch (PDOException $e) {
+            error_log('Error en la validación de credenciales: ' . $e->getMessage());
+            return false;
         }
-    } catch (PDOException $e) {
-        error_log('Error en la validación de credenciales: ' . $e->getMessage());
-        return false;
     }
-}
+    
 
 public function obtenerDocumentoPorUsuarioOCorreo($usuarioOcorreo) {
     // Preparar la consulta para obtener el documento
