@@ -4,11 +4,12 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+
 require_once '../models/UsuarioEmpresaModel.php';
 require_once '../models/ContrasenaTemporalModel.php';
-require_once '../libraries/PHPMailer/src/PHPMailer.php';
-require_once '../libraries/PHPMailer/src/Exception.php';
-require_once '../libraries/PHPMailer/src/SMTP.php';
+require_once '../libreries/PHPMailer/src/PHPMailer.php';
+require_once '../libreries/PHPMailer/src/Exception.php';
+require_once '../libreries/PHPMailer/src/SMTP.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -25,14 +26,14 @@ class RecuperacionController {
     }
 
     public function enviarCodigoRecuperacion($email) {
-        // Verificar si es administrador
+        
         $documento = $this->usuarioModel->verificarAdministrador($email);
 
-        if ($documento) { // Si devuelve el documento, es administrador
+        if ($documento) { 
             $codigo = rand(100000, 999999);
             $fechaExpiracion = date('Y-m-d H:i:s', strtotime('+1 hour'));
 
-            // Guardar el código temporal
+            
             if ($this->contrasenaModel->guardarCodigoTemporal($documento, $email, $codigo, $fechaExpiracion)) {
                 $this->enviarCorreo($email, $codigo);
                 echo "Correo enviado con el código de recuperación.";
