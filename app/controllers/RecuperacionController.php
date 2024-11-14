@@ -11,6 +11,13 @@ require_once '../libreries/PHPMailer/src/PHPMailer.php';
 require_once '../libreries/PHPMailer/src/Exception.php';
 require_once '../libreries/PHPMailer/src/SMTP.php';
 
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "jukebox";
+
+$conexion = new mysqli($servername, $username, $password, $dbname);
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
