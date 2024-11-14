@@ -24,7 +24,7 @@
                     <a id="a_dashboardAdmin_General" href="usuarioPorAceptar"> <i class='bx bxs-user'></i> Por aceptar</a>
                 </li>
                 <li id="li_dashboardAdmin_General">
-                    <a id="a_dashboardAdmin_General" href="#"><i class='bx bxs-cog'></i> Configuracion</a>
+                    <a id="a_dashboardAdmin_General" href="password-update-view.php"><i class='bx bxs-cog'></i> Configuracion</a>
                 </li>
             </ul>
         </div>
