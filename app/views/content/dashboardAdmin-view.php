@@ -1,5 +1,11 @@
 <?php
 require_once('app/controllers/control_inactividad.php'); 
+
+if (isset($_SESSION['nit'])) {
+    $nit = $_SESSION['nit']; // Obtenemos el NIT almacenado en la sesión
+} else {
+    $nit = ''; // En caso de que el NIT no esté disponible, manejamos este caso
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,9 +32,19 @@ require_once('app/controllers/control_inactividad.php');
                 <li id="li_dashboardAdmin">
                     <a id="a_dashboardAdmin" href="#"> <i class='bx bxs-user'></i> Usuarios</a>
                 </li>
+                <!-- Formulario con el método GET y la URL de destino -->
+                <form id="formActualizarEmpresa" method="post" action="http://localhost/jukebox/app/views/content/actualizar-view.php">
+                    <!-- Incluimos el NIT en un campo hidden -->
+                    <input type="hidden" name="nit" value="<?php echo htmlspecialchars($nit, ENT_QUOTES, 'UTF-8'); ?>">
+                </form>
+
+                <!-- Enlace que actúa como botón para enviar el formulario -->
                 <li id="li_dashboardAdmin">
-                    <a id="a_dashboardAdmin" href="#"><i class='bx bxs-cog'></i> Configuracion</a>
+                    <a id="a_dashboardAdmin" href="#" onclick="document.getElementById('formActualizarEmpresa').submit();">
+                        <i class='bx bxs-cog'></i> Configuración
+                    </a>
                 </li>
+
             </ul>
         </div>
 
@@ -45,7 +61,7 @@ require_once('app/controllers/control_inactividad.php');
                     <a href="#"><i class='bx bx-help-circle'></i> Ayuda</a>
                 </li>
                 <li id="li_dashboardMain_abajo">
-                    <a href="index"><i class='bx bx-log-out'></i>Cerrar sesion</a>
+                    <a href="<?php echo APP_URL;?>logout.php"><i class='bx bx-log-out'></i>Cerrar sesión</a>
                 </li>
             </ul>
         </div>

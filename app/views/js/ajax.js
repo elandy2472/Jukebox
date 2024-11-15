@@ -87,23 +87,38 @@ function alertas_ajax(alerta){
         window.location.href=alerta.url;
     }
 }
-
 /* Procesamiento de cookies */
+// Procesamiento de cookies
 document.addEventListener('DOMContentLoaded', function() {
     deleteCookie('cookies_accepted');
 
-    document.getElementById('cookie-banner').style.display = 'block';
+    // Deshabilitar el botón de enviar al cargar la página
+    document.getElementById('boton_ingresar_sala').disabled = true;
 
+    // Verifica si el nickname está lleno para mostrar el banner de cookies
+    document.getElementById('nickname').addEventListener('input', function() {
+        const nickname = this.value.trim();
+
+        if (nickname.length >= 4) { // Mostrar banner solo si el nickname tiene al menos 4 caracteres
+            document.getElementById('cookie-banner').style.display = 'block';
+        } else {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    });
+
+    // Funciones para aceptar o rechazar cookies
     document.getElementById('accept-cookies').addEventListener('click', function() {
         setCookie('cookies_accepted', 'true', 1); 
         guardarPreferenciaCookies('true'); 
         document.getElementById('cookie-banner').style.display = 'none';
+        document.getElementById('boton_ingresar_sala').disabled = false; // Habilitar el botón de enviar
     });
 
     document.getElementById('reject-cookies').addEventListener('click', function() {
         setCookie('cookies_accepted', 'false', 1); 
         guardarPreferenciaCookies('false'); 
         document.getElementById('cookie-banner').style.display = 'none';
+        document.getElementById('boton_ingresar_sala').disabled = false; // Habilitar el botón de enviar
     });
 
     function setCookie(name, value, days) {
@@ -118,14 +133,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function guardarPreferenciaCookies(preferencia) {
-        const nickname = document.getElementById('nickname').value; 
-    
+        const nickname = document.getElementById('nickname').value;
+
         fetch('guardar_preferencia_cookies.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: `cookies_accepted=${preferencia}&nickname=${nickname}` 
+            body: `cookies_accepted=${preferencia}&nickname=${nickname}`
         })
         .then(response => response.text())
         .then(data => {
@@ -134,31 +149,29 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch((error) => {
             console.error('Error al guardar la preferencia de cookies:', error);
         });
-    }})
-
-
-
-/* Boton cerrar sesion */
-let btn_exit=document.getElementById("btn_exit");
-
-btn_exit.addEventListener("click", function(e){
-
-    e.preventDefault();
-    
-    Swal.fire({
-        title: '¿Quieres salir del sistema?',
-        text: "La sesión actual se cerrará y saldrás del sistema",
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, salir',
-        cancelButtonText: 'Cancelar'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            let url=this.getAttribute("href");
-            window.location.href=url;
-        }
-    });
-
+    }
 });
+/* Boton cerrar sesion */
+let btn_exit = document.getElementById("btn_exit");
+
+if (btn_exit) { // Asegurarse de que el botón exista
+    btn_exit.addEventListener("click", function(e){
+        e.preventDefault();
+        
+        Swal.fire({
+            title: '¿Quieres salir del sistema?',
+            text: "La sesión actual se cerrará y saldrás del sistema",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, salir',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let url = this.getAttribute("href");
+                window.location.href = url;
+            }
+        });
+    });
+}

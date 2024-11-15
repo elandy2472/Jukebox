@@ -56,7 +56,7 @@
     <div class="container">
         <h1>¡Actualización Exitosa!</h1>
         <p>Los datos se han actualizado correctamente.</p>
-        <a href="http://localhost\Jukebox\dashboard" class="button">Volver al inicio</a>
+        <a href="../../../dashboardAdmin" class="button">Volver al inicio</a>
     </div>
 </body>
 </html>

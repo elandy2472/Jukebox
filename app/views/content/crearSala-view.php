@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         // Aforo final predeterminado
         $aforoFinalSala = 30;
-        print_r($_SESSION);
+       
         
         // Verifica si 'documento' existe en la sesión
         $documento = isset($_SESSION['documento']) ? $_SESSION['documento'] : null;
