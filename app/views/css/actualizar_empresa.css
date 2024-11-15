@@ -44,11 +44,12 @@ form .content {
 }
 
 .content div {
-    width: 100%;
+    flex: 1 1 100%; /* Los elementos por defecto ocupan el 100% en pantallas pequeñas */
 }
 
 .content .half-width {
-    width: 48%;
+    flex: 1 1 48%; /* Los elementos con clase half-width ocuparán el 48% en pantallas grandes */
+    min-width: 250px; /* Aseguramos que no se colapsen en pantallas pequeñas */
 }
 
 label {
@@ -209,4 +210,11 @@ input:focus {
 
 .modal button:hover {
     background-color: #3b5cf0;
+}
+
+/* Vista responsive */
+@media (max-width: 600px) {
+    .content .half-width {
+        flex: 1 1 100%; /* En pantallas pequeñas, ocupan el 100% */
+    }
 }

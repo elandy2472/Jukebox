@@ -58,7 +58,7 @@ $conn->close();
                     <label for="city">Ciudad</label>
                     <input type="text" id="city" name="city" placeholder="Ciudad" value="<?php echo htmlspecialchars($empresa['ciudad']); ?>" required>
                 </div>
-                <div>
+                <div class="half-width">
                     <label for="nit">NIT</label>
                     <input type="text" id="nit" name="nit" placeholder="NIT" value="<?php echo htmlspecialchars($empresa['nit']); ?>" readonly required>
                 </div>
