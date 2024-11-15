@@ -1,0 +1,212 @@
+/* Estilos generales */
+body {
+    background-color: #1e1e2f; /* Color de fondo oscuro */
+    font-family: 'Arial', sans-serif;
+    color: #ffffff; /* Texto claro sobre fondo oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Título */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: rgb(24, 61, 228); /* Azul para destacar el título */
+    font-weight: 600;
+}
+
+/* Contenedor del formulario */
+section.update {
+    background-color: #2b2b3c; /* Fondo oscuro del formulario */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease;
+}
+
+section.update:hover {
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.7); /* Efecto de hover más fuerte */
+}
+
+/* Estilos del formulario */
+form .content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.content div {
+    width: 100%;
+}
+
+.content .half-width {
+    width: 48%;
+}
+
+label {
+    display: block;
+    font-size: 0.9em;
+    margin-bottom: 8px;
+    color: #cccccc; /* Texto más claro para etiquetas */
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #3b3b4e;
+    border-radius: 8px;
+    background-color: #3b3b4e; /* Fondo de los inputs oscuro */
+    color: #ffffff;
+    font-size: 0.95em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input::placeholder {
+    color: #777777; /* Placeholder con un color suave */
+}
+
+input:focus {
+    outline: none;
+    border-color: rgb(24, 61, 228); /* Bordes azules en focus */
+    background-color: #2b2b3c;
+}
+
+/* Botón */
+.button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.button button {
+    background-color: rgb(24, 61, 228);
+    color: #ffffff;
+    border: none;
+    padding: 15px 100px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button button:hover {
+    background-color: #3b5cf0; /* Color más claro al hover */
+}
+
+.button button span {
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+/* Checkbox */
+.checkbox {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    color: #cccccc;
+}
+
+.checkbox input {
+    margin-right: 10px;
+}
+
+.checkbox span {
+    font-size: 0.9em;
+}
+
+/* Estilos del Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo más oscuro */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenido del Modal */
+.modal-content {
+    background-color: #2b2b3c;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    max-width: 400px;
+    margin: auto;
+    position: relative;
+    animation: modalFadeIn 0.5s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Botón de Cerrar (X) */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.5em;
+    color: #888;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: rgb(24, 61, 228);
+}
+
+/* Título del Modal */
+.modal h2 {
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-size: 1.8em;
+}
+
+/* Texto dentro del Modal */
+.modal p {
+    font-size: 1em;
+    color: #cccccc;
+    margin-bottom: 20px;
+}
+
+/* Botón Aceptar */
+.modal button {
+    background-color: rgb(24, 61, 228);
+    color: #ffffff;
+    padding: 10px 40px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.modal button:hover {
+    background-color: #3b5cf0;
+}
