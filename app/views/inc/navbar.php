@@ -6,10 +6,10 @@
             </div>
             <div class="opciones">
                 <li id="li_todos">
-                    <a id="a_todos" href="<?php echo APP_URL?>index#tarjeta_como_funciona_jukebox">Como funciona Jukebox</a>
+                    <a id="a_todos" href="./index#tarjeta_como_funciona_jukebox">¿Como funciona?</a>
                 </li>
                 <li id="li_todos">
-                        <a id="a_todos" href="<?php echo APP_URL?>index#descripcion_sobre_nosotros">Nosotros</a>
+                        <a id="a_todos" href="./index#descripcion_sobre_nosotros">Nosotros</a>
                 </li>
                 <li id="li_todos">
                     <a id="a_todos" href="register">Empresas</a>
