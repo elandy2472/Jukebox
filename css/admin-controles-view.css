@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: white;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #1c1c1c;
+    padding: 20px;
+    position: fixed;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 20px;
+}
+
+.sidebar ul li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.sidebar ul li a:hover {
+    color: #fff;
+}
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 100%;
+}
+
+.sidebar-footer a {
+    color: #ccc;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.sidebar-footer a:hover {
+    color: #fff;
+}
+
+.main-content {
+    margin-left: 270px;
+    padding: 20px;
+}
+
+.music-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.music-header h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.room-card {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.room-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.room-info p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.controls button {
+    background-color: #1e1e1e;
+    border: none;
+    color: white;
+    padding: 9px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: self-start;
+    width: 50px;
+    height: 50px;
+    transition: background-color 0.3s ease;
+}
+
+.controls button:hover {
+    background-color: transparent;
+}
+
+.controls i {
+    font-size: 24px;
+    margin: 0;
+}
+
+.icono img {
+    width: 24px;
+    height: 24px;
+    filter: invert(100%);
+}
+
+button.play i {
+    color: #28a745;
+}
+
+button.pause i {
+    color: #ffc107;
+}
+
+button.skip i {
+    color: #17a2b8;
+}
+
+button.delete i {
+    color: #dc3545;
+}
