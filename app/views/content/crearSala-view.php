@@ -207,7 +207,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php endif; ?>
             <form method="POST">
                 <label for="room-name">nombre de sala</label>
-                <input type="text" id="room-name" name="room_name" placeholder="Enter a room name" required value="<?php echo htmlspecialchars($roomName); ?>">
+                <input type="text" id="room-name" name="room_name" maxlength="10" placeholder="Enter a room name" required value="<?php echo htmlspecialchars($roomName); ?>">
                 <button type="submit">Crear</button>
             </form>
         </main>

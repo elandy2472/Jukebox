@@ -2,13 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo APP_URL; ?>app/views/css/register-view.css">
-    <title>Register</title>
+<link rel="stylesheet" href=".\app\views\css\register-view.css">
+<?php require_once("./app/views/inc/head.php"); ?>
 </head>
 
 <body>
+<?php require_once("./app/views/inc/navbar.php") ?>
     <section class="register">
 
         <h2>Registra tu empresa</h2>
