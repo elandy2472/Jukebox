@@ -1,0 +1,21 @@
+ARG PHP_VERSION=8.2.12
+FROM php:${PHP_VERSION}-apache
+
+# Instalar extensiones de PHP
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+
+# Habilitar módulos de Apache
+RUN a2enmod rewrite headers
+
+# Configurar Apache
+COPY apache.conf /etc/apache2/sites-available/000-default.conf
+RUN rm -f /etc/apache2/sites-enabled/000-default.conf && \
+    ln -sf /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-enabled/
+
+# Configurar permisos
+RUN chown -R www-data:www-data /var/www/html && \
+    chmod -R 755 /var/www/html
+
+# Configurar PHP
+RUN echo "display_errors = On" >> /usr/local/etc/php/php.ini && \
+    echo "error_reporting = E_ALL" >> /usr/local/etc/php/php.ini

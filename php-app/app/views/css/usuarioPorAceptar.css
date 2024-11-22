@@ -1,0 +1,113 @@
+:root {
+    --color_principal: #111521;
+    --color_botones: rgb(24, 61, 228);
+    --color_botones_hover: rgba(24, 61, 228, 0.427);
+    --color_fondo_inputs: #24284a;
+}
+
+body#body_admin {
+    font-family: Arial, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+#container_admin {
+    background-color: var(--color_fondo_inputs);
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px;
+    height: 90%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#title_admin {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#div_volver_dashboardAdminGeneral{
+    text-align: center;
+}
+
+#link_volver_dashboardAdminGeneral{
+    text-decoration: none;
+    padding: 5px 10px;
+    color: white;
+    background-color: var(--color_botones);
+    border-radius: 6px;
+}
+
+#table_admin {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#thead_admin th {
+    background-color: var(--color_principal);
+    padding: 10px;
+    text-align: left;
+    color: white;
+}
+
+#tbody_admin tr {
+    background-color: var(--color_fondo_inputs);
+    border-bottom: 1px solid #333;
+}
+
+#tbody_admin td {
+    padding: 10px;
+    text-align: left;
+}
+
+.btn_approve, .btn_reject {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.btn_approve {
+    background-color: var(--color_botones);
+    color: white;
+}
+
+.btn_reject {
+    background-color: red;
+    color: white;
+}
+
+.btn_approve:hover {
+    background-color: var(--color_botones_hover);
+}
+
+.btn_reject:hover {
+    background-color: darkred;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #container_admin {
+        padding: 10px;
+    }
+
+    #table_admin th, #table_admin td {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .btn_approve, .btn_reject {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}

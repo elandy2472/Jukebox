@@ -1,0 +1,21 @@
+ARG NODE_VERSION=20.17.0
+FROM node:${NODE_VERSION}
+
+WORKDIR /usr/src/app
+
+# Copiar package.json y package-lock.json (si existe)
+COPY ./nodejs-api/package*.json ./
+
+# Instalar dependencias
+RUN npm install
+
+# Instalar las dependencias específicas que mencionaste
+RUN npm install express axios cors dotenv
+
+# Copiar el código fuente de la API
+COPY ./nodejs-api .
+
+# Exponer el puerto en el que se ejecutará la API de Node.js
+EXPOSE 3000
+
+CMD [ "node", "index.js" ]

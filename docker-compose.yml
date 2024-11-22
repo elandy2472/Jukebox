@@ -1,0 +1,54 @@
+services:
+  php-apache:
+    build:
+      context: .
+      dockerfile: Dockerfile-php
+      args:
+        PHP_VERSION: 8.2.12
+    ports:
+      - "80:80"
+    volumes:
+      - ./php-app:/var/www/html:cached
+      - ./apache.conf:/etc/apache2/sites-available/000-default.conf:ro
+    depends_on:
+      - mysql
+
+  nodejs-api:
+    build:
+      context: .
+      dockerfile: Dockerfile-nodejs
+      args:
+        NODE_VERSION: 20.17.0
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./nodejs-api:/usr/src/app
+      - /usr/src/app/node_modules
+    env_file:
+      - ./nodejs-api/.env
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: jukebox
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./php-app/DB:/docker-entrypoint-initdb.d
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: rootpassword
+    depends_on:
+      - mysql
+
+volumes:
+  mysql-data:
